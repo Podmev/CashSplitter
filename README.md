@@ -1,0 +1,1 @@
+Android app which helps control virtual split of money you have and control it
