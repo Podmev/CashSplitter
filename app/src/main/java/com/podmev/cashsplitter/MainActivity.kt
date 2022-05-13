@@ -1,12 +1,16 @@
 package com.podmev.cashsplitter
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.get
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import java.io.BufferedWriter
 import java.io.File
@@ -18,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     var categories = mutableListOf<CashCategory>()
+    var selectedCategoryPosition:Int = -1
     var plainGridData = mutableListOf<String>()
     lateinit var adapter: ArrayAdapter<String>
 
@@ -28,11 +33,28 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-            adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plainGridData)
+            adapter = object:ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plainGridData){
+                override fun getView(position:Int, convertView: View?, parent: ViewGroup):View{
+                    val view = super.getView(position, convertView, parent)
+                    var color = Color.TRANSPARENT
+                    val row = selectedCategoryPosition
+                    val numColumns = binding.gridCategories.numColumns
+                    if(position in row*numColumns until row*(numColumns+1)){
+                        //in selected row
+                        color = Color.YELLOW
+                    }
+                    view.setBackgroundColor(color)
+                    return view
+                }
+
+            }
             binding.gridCategories.adapter = adapter
 
             //for test now - put stub data
+            selectedCategoryPosition=2
             updateWithNewCategories(createSimpleCategories())
+
+            //end of testing
             Log.i("mainActivity", "onCreate: finished")
         }catch (e:Throwable){
             Log.e("mainActivity", "onCreate failed: ${e.javaClass}, ${e.message}")
