@@ -7,13 +7,11 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import java.io.File
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,8 +60,10 @@ class MainActivity : AppCompatActivity() {
             binding.buttonEdit.setOnClickListener{editAction()}
             binding.buttonCreate.setOnClickListener{createAction()}
             binding.buttonDelete.setOnClickListener{deleteAction()}
+
+            uploadFromFileOrDefault()
             //for test now - put stub data
-            updateWithNewCategories(createSimpleCategories())
+            //updateWithNewCategories(createSimpleCategories())
 
             //end of testing
             Log.i("mainActivity", "onCreate: finished")
@@ -163,6 +163,14 @@ class MainActivity : AppCompatActivity() {
         } catch (e:Exception){
             Log.e("mainActivity", "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
             Toast.makeText(this, "Could upload dump file: ${e.message?.take(50)}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun uploadFromFileOrDefault(){
+        uploadFromFile()
+        if(categories.isEmpty()) {
+            categories.add(CashCategory("Other", 0.0, false, false))
+            updateAll()
         }
     }
 
