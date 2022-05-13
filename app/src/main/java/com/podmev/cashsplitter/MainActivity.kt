@@ -188,8 +188,26 @@ class MainActivity : AppCompatActivity() {
             showNeedToSelectRow()
             return
         }
-        //TODO
-        updateAll()
+        val cashCategory = categories[selectedCategoryPosition]
+        val categoryName = cashCategory.name
+
+        val dialog = CustomDialog(this)
+        dialog.show(
+            resources.getString(R.string.dialog_clear_category_title),
+            String.format(resources.getString(R.string.dialog_clear_category_message), categoryName)
+        ){
+            when(it){
+                CustomDialog.ResponseType.YES -> {
+                    //clear here the sum
+                    cashCategory.sum = 0.0
+                    //unselect position
+                    selectedCategoryPosition = -1
+                    updateAll()
+                }
+                CustomDialog.ResponseType.NO ->{}
+                CustomDialog.ResponseType.CANCEL ->{}
+            }
+        }
     }
 
     private fun downAction(){

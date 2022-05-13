@@ -23,8 +23,8 @@
     <string name="dialog_delete_category_title">Delete category</string>
     <string name="dialog_delete_category_message">Do you really want to delete category %1$s?</string>
 
-    <string name="dialog_clean_category_title">Clean category</string>
-    <string name="dialog_clean_category_message">Do you really want to clean sum for category %1$s?</string>
+    <string name="dialog_clear_category_title">Clear category</string>
+    <string name="dialog_clear_category_message">Do you really want to clear sum for category %1$s?</string>
     <string name="dialog_button_positive">Yes</string>
     <string name="dialog_button_negative">No</string>
 
