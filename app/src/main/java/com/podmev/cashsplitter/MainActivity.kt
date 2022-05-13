@@ -250,8 +250,36 @@ class MainActivity : AppCompatActivity() {
             showNeedToSelectRow()
             return
         }
-        //TODO
-        updateAll()
+        val cashCategory = categories[selectedCategoryPosition]
+        val categoryName = cashCategory.name
+        val categorySum = cashCategory.sum
+
+        val dialog = EditTextDialog(this)
+        val context = this
+        dialog.show(
+            String.format(resources.getString(R.string.dialog_edit_category_title), categoryName, categorySum),
+            categoryName,
+            String.format(resources.getString(R.string.dialog_edit_category_hint), categoryName)
+        ){ responseType, text ->
+            when(responseType){
+                EditTextDialog.ResponseType.YES -> {
+                    if(text==categoryName){
+                        Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_no_changes), text), Toast.LENGTH_SHORT).show()
+                        return@show
+                    }
+                    val foundExistedCategory = categories.find{it.name==text}
+                    if(foundExistedCategory!=null){
+                        Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_collision), text), Toast.LENGTH_SHORT).show()
+                        return@show
+                    }
+                    cashCategory.name = text
+                    selectedCategoryPosition = -1
+                    updateAll()
+                }
+                EditTextDialog.ResponseType.NO ->{}
+                EditTextDialog.ResponseType.CANCEL ->{}
+            }
+        }
     }
 
     private fun createAction(){
