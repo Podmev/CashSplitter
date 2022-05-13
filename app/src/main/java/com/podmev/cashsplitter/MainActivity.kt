@@ -55,39 +55,16 @@ class MainActivity : AppCompatActivity() {
                         updateSelectedCategoryPosition(position)
                         adapter.notifyDataSetChanged()
             }
-
-            binding.buttonDown.setOnClickListener{
-                if(selectedCategoryPosition == -1){
-                    showNeedToSelectRow()
-                    return@setOnClickListener
-                }
-                if(selectedCategoryPosition==categories.lastIndex){
-                    Toast.makeText(this, "This category cannot already go down", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                val curCategory = categories[selectedCategoryPosition]
-                val nextCategory = categories[selectedCategoryPosition+1]
-                categories.set(selectedCategoryPosition, nextCategory)
-                categories.set(selectedCategoryPosition+1, curCategory)
-                selectedCategoryPosition++
-                updateAll()
-            }
-            binding.buttonUp.setOnClickListener{
-                if(selectedCategoryPosition == -1){
-                    showNeedToSelectRow()
-                    return@setOnClickListener
-                }
-                if(selectedCategoryPosition==0){
-                    Toast.makeText(this, "This category cannot already go up", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                val curCategory = categories[selectedCategoryPosition]
-                val prevCategory = categories[selectedCategoryPosition-1]
-                categories.set(selectedCategoryPosition, prevCategory)
-                categories.set(selectedCategoryPosition-1, curCategory)
-                selectedCategoryPosition--
-                updateAll()
-            }
+            //first line of buttons
+            binding.buttonPlus.setOnClickListener{plusAction()}
+            binding.buttonMinus.setOnClickListener{minusAction()}
+            binding.buttonClear.setOnClickListener{clearAction()}
+            //second line of buttons
+            binding.buttonDown.setOnClickListener{downAction()}
+            binding.buttonUp.setOnClickListener{upAction()}
+            binding.buttonEdit.setOnClickListener{editAction()}
+            binding.buttonCreate.setOnClickListener{createAction()}
+            binding.buttonDelete.setOnClickListener{deleteAction()}
             //for test now - put stub data
             updateWithNewCategories(createSimpleCategories())
 
@@ -186,6 +163,95 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Could upload dump file: ${e.message?.take(50)}", Toast.LENGTH_LONG).show()
         }
     }
+
+    //actions
+    fun plusAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
+    fun minusAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
+    fun clearAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
+    fun downAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        if(selectedCategoryPosition==categories.lastIndex){
+            Toast.makeText(this, "This category cannot already go down", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val curCategory = categories[selectedCategoryPosition]
+        val nextCategory = categories[selectedCategoryPosition+1]
+        categories.set(selectedCategoryPosition, nextCategory)
+        categories.set(selectedCategoryPosition+1, curCategory)
+        selectedCategoryPosition++
+        updateAll()
+    }
+
+    fun upAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        if(selectedCategoryPosition==0){
+            Toast.makeText(this, "This category cannot already go up", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val curCategory = categories[selectedCategoryPosition]
+        val prevCategory = categories[selectedCategoryPosition-1]
+        categories.set(selectedCategoryPosition, prevCategory)
+        categories.set(selectedCategoryPosition-1, curCategory)
+        selectedCategoryPosition--
+        updateAll()
+    }
+    fun editAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
+    fun createAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
+    fun deleteAction(){
+        if(selectedCategoryPosition == -1){
+            showNeedToSelectRow()
+            return
+        }
+        //TODO
+        updateAll()
+    }
+
 
 
 }
