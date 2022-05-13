@@ -3,7 +3,7 @@ package com.podmev.cashsplitter
 import android.app.AlertDialog
 import android.content.Context
 
-class CustomDialog(context: Context) : AlertDialog.Builder(context) {
+class SimpleDialog(context: Context) : AlertDialog.Builder(context) {
 
     lateinit var onResponse: (r : ResponseType) -> Unit
 

@@ -1,9 +1,6 @@
 package com.podmev.cashsplitter
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import java.io.File
 import java.lang.Exception
@@ -78,6 +75,11 @@ class MainActivity : AppCompatActivity() {
     private fun showNeedToSelectRow(){
         Toast.makeText(this, R.string.toast_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
+
+    private fun showDontNeedToSelectRow(){
+        Toast.makeText(this, R.string.toast_dont_need_to_select_category, Toast.LENGTH_SHORT).show()
+    }
+
     private fun updateSelectedCategoryPosition(plainPosition: Int){
         val rowPos = plainPosition / binding.gridCategories.numColumns
         if(selectedCategoryPosition==rowPos){
@@ -191,21 +193,21 @@ class MainActivity : AppCompatActivity() {
         val cashCategory = categories[selectedCategoryPosition]
         val categoryName = cashCategory.name
 
-        val dialog = CustomDialog(this)
+        val dialog = SimpleDialog(this)
         dialog.show(
             resources.getString(R.string.dialog_clear_category_title),
             String.format(resources.getString(R.string.dialog_clear_category_message), categoryName)
         ){
             when(it){
-                CustomDialog.ResponseType.YES -> {
+                SimpleDialog.ResponseType.YES -> {
                     //clear here the sum
                     cashCategory.sum = 0.0
                     //unselect position
                     selectedCategoryPosition = -1
                     updateAll()
                 }
-                CustomDialog.ResponseType.NO ->{}
-                CustomDialog.ResponseType.CANCEL ->{}
+                SimpleDialog.ResponseType.NO ->{}
+                SimpleDialog.ResponseType.CANCEL ->{}
             }
         }
     }
@@ -253,12 +255,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createAction(){
-        if(selectedCategoryPosition == -1){
-            showNeedToSelectRow()
+        //Single opposite check - shouldn't be selected
+        if(selectedCategoryPosition != -1){
+            showDontNeedToSelectRow()
             return
         }
-        //TODO
-        updateAll()
+
+        val dialog = EditTextDialog(this)
+        val context = this
+        dialog.show(
+            resources.getString(R.string.dialog_create_category_title),
+            "",
+            resources.getString(R.string.dialog_create_category_hint)
+        ){ responseType, text ->
+            when(responseType){
+                EditTextDialog.ResponseType.YES -> {
+                    val foundExistedCategory = categories.find{it.name==text}
+                    if(foundExistedCategory!=null){
+                        Toast.makeText(context, String.format(resources.getString(R.string.toast_create_collision), text), Toast.LENGTH_SHORT).show()
+                        return@show
+                    }
+                    val cashCategory = CashCategory(text, 0.0, true, true)
+                    categories.add(cashCategory)
+                    updateAll()
+                }
+                EditTextDialog.ResponseType.NO ->{}
+                EditTextDialog.ResponseType.CANCEL ->{}
+            }
+        }
     }
 
     private fun deleteAction(){
@@ -275,20 +299,20 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
             return
         }
-        val dialog = CustomDialog(this)
+        val dialog = SimpleDialog(this)
         dialog.show(
             resources.getString(R.string.dialog_delete_category_title),
             String.format(resources.getString(R.string.dialog_delete_category_message), categoryName)
         ){
             when(it){
-                CustomDialog.ResponseType.YES -> {
+                SimpleDialog.ResponseType.YES -> {
                     categories.removeAt(selectedCategoryPosition)
                     //unselect position
                     selectedCategoryPosition = -1
                     updateAll()
                 }
-                CustomDialog.ResponseType.NO ->{}
-                CustomDialog.ResponseType.CANCEL ->{}
+                SimpleDialog.ResponseType.NO ->{}
+                SimpleDialog.ResponseType.CANCEL ->{}
             }
         }
     }
