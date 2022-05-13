@@ -1,10 +1,17 @@
 package com.podmev.cashsplitter
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,19 +32,23 @@ class MainActivity : AppCompatActivity() {
             binding.gridCategories.adapter = adapter
 
             //for test now - put stub data
-            categories.apply {
-                clear()
-                addAll(createSimpleCategories())
-            }
-            updateAll()
+            updateWithNewCategories(createSimpleCategories())
             Log.i("mainActivity", "onCreate: finished")
         }catch (e:Throwable){
             Log.e("mainActivity", "onCreate failed: ${e.javaClass}, ${e.message}")
         }
     }
 
+    private fun updateWithNewCategories(newCategories: List<CashCategory>){
+        categories.apply {
+            clear()
+            addAll(newCategories)
+        }
+        updateAll()
+    }
+
     /*updates view + file on disk*/
-    fun updateAll(){
+    private fun updateAll(){
         Log.i("mainActivity", "updateAll: started")
         updateView()
         dumpToFile()
@@ -46,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* updates grid with plain data and total sum*/
-    fun updateView(){
+    private fun updateView(){
         Log.i("mainActivity", "updateView: started")
         //refresh
         Log.i("mainActivity", "updateView: started updating grid")
@@ -67,16 +78,42 @@ class MainActivity : AppCompatActivity() {
         Log.i("mainActivity", "updateView: finished")
     }
 
-    fun dumpToFile(){
-        //TODO
+    private fun dumpToFile(){
         Log.i("mainActivity", "dumpToFile: started")
+        val filePath = resources.getString(R.string.dumpFilePath)
+        //write to private dir
+        val file = File(filesDir, filePath)
+        if(!file.exists()){
+            file.createNewFile()
+        } else if(file.isDirectory){
+            file.delete()
+            file.createNewFile()
+        }
+        val content = categories.toLines()
+        this.openFileOutput(filePath, Context.MODE_PRIVATE).write(content.toByteArray())
         Log.i("mainActivity", "dumpToFile: finished")
     }
 
-    fun uploadFromFile(){
-         //TODO
-        Log.i("mainActivity", "uploadFromFile: started")
-        Log.i("mainActivity", "uploadFromFile: finished")
+    private fun uploadFromFile(){
+        try {
+            Log.i("mainActivity", "uploadFromFile: started")
+            val filePath = resources.getString(R.string.dumpFilePath)
+            //read from private dir
+            val file = File(filesDir, filePath)
+            if (!file.exists()) {
+                file.createNewFile()
+            } else if (file.isDirectory) {
+                file.delete()
+                file.createNewFile()
+            }
+            val content = file.readText()
+            val newCategories = parseCashCategoriesFromLines(content)
+            updateWithNewCategories(newCategories)
+            Log.i("mainActivity", "uploadFromFile: finished")
+        } catch (e:Exception){
+            Log.e("mainActivity", "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
+            Toast.makeText(this, "Could upload dump file: ${e.message?.take(50)}", Toast.LENGTH_LONG).show()
+        }
     }
 
 
