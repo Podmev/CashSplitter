@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:id="@+id/textView_total"
         android:text="@string/textView_total_text"
     />
