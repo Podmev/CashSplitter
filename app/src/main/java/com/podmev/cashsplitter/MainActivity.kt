@@ -72,6 +72,22 @@ class MainActivity : AppCompatActivity() {
                 selectedCategoryPosition++
                 updateAll()
             }
+            binding.buttonUp.setOnClickListener{
+                if(selectedCategoryPosition == -1){
+                    showNeedToSelectRow()
+                    return@setOnClickListener
+                }
+                if(selectedCategoryPosition==0){
+                    Toast.makeText(this, "This category cannot already go up", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                val curCategory = categories[selectedCategoryPosition]
+                val prevCategory = categories[selectedCategoryPosition-1]
+                categories.set(selectedCategoryPosition, prevCategory)
+                categories.set(selectedCategoryPosition-1, curCategory)
+                selectedCategoryPosition--
+                updateAll()
+            }
             //for test now - put stub data
             updateWithNewCategories(createSimpleCategories())
 
