@@ -55,6 +55,23 @@ class MainActivity : AppCompatActivity() {
                         updateSelectedCategoryPosition(position)
                         adapter.notifyDataSetChanged()
             }
+
+            binding.buttonDown.setOnClickListener{
+                if(selectedCategoryPosition == -1){
+                    showNeedToSelectRow()
+                    return@setOnClickListener
+                }
+                if(selectedCategoryPosition==categories.lastIndex){
+                    Toast.makeText(this, "This category cannot already go down", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                val curCategory = categories[selectedCategoryPosition]
+                val nextCategory = categories[selectedCategoryPosition+1]
+                categories.set(selectedCategoryPosition, nextCategory)
+                categories.set(selectedCategoryPosition+1, curCategory)
+                selectedCategoryPosition++
+                updateAll()
+            }
             //for test now - put stub data
             updateWithNewCategories(createSimpleCategories())
 
@@ -63,6 +80,10 @@ class MainActivity : AppCompatActivity() {
         }catch (e:Throwable){
             Log.e("mainActivity", "onCreate failed: ${e.javaClass}, ${e.message}")
         }
+    }
+
+    private fun showNeedToSelectRow(){
+        Toast.makeText(this, "Choose row by clicking", Toast.LENGTH_SHORT).show()
     }
     private fun updateSelectedCategoryPosition(plainPosition: Int){
         val rowPos = plainPosition / binding.gridCategories.numColumns
