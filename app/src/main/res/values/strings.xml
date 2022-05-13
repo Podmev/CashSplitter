@@ -23,6 +23,8 @@
     <string name="toast_create_collision">Category %1$s already exists</string>
     <string name="toast_edit_collision">Category %1$s already exists</string>
     <string name="toast_edit_no_changes">Category %1$s name didn\'t change</string>
+    <string name="toast_plus_negative_forbidden">Cannot add negative sum</string>
+    <string name="toast_minus_negative_forbidden">Cannot subtract negative sum</string>
 
     <string name="dialog_delete_category_title">Delete category</string>
     <string name="dialog_delete_category_message">Do you really want to delete category %1$s?</string>
@@ -34,7 +36,13 @@
     <string name="dialog_create_category_hint">Type new category name</string>
 
     <string name="dialog_edit_category_title">Edit category %1$s with sum %2$, .2f</string>
-    <string name="dialog_edit_category_hint">Edit category %1$s</string>
+    <string name="dialog_edit_category_hint">Type new category name instead of %1$s</string>
+
+    <string name="dialog_plus_category_title">Add value to category %1$s with sum %2$, .2f</string>
+    <string name="dialog_plus_category_hint">Type adding value</string>
+
+    <string name="dialog_minus_category_title">Subtract value to category %1$s with sum %2$, .2f</string>
+    <string name="dialog_minus_category_hint">Type subtracting value from 0 till %1$, .2f</string>
 
     <string name="dialog_button_positive">Yes</string>
     <string name="dialog_button_negative">No</string>
