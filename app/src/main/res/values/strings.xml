@@ -14,6 +14,7 @@
     <string name="button_down_text">⇓</string>
     <string name="button_up_text">⇑</string>
     <string name="button_edit_text">✎</string>
+    <string name="button_create_text">📝</string>
     <string name="button_delete_text">❌</string>
     <string name="textView_total_text">Total: %1$s</string>
 </resources>
