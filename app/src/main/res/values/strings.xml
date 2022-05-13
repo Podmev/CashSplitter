@@ -25,6 +25,7 @@
     <string name="toast_edit_no_changes">Category %1$s name didn\'t change</string>
     <string name="toast_plus_negative_forbidden">Cannot add negative sum</string>
     <string name="toast_minus_negative_forbidden">Cannot subtract negative sum</string>
+    <string name="toast_minus_too_much_forbidden">Cannot subtract more than we have</string>
 
     <string name="dialog_delete_category_title">Delete category</string>
     <string name="dialog_delete_category_message">Do you really want to delete category %1$s?</string>

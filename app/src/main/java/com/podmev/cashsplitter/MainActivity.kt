@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
         val context = this
         dialog.show(
             String.format(resources.getString(R.string.dialog_plus_category_title), categoryName, categorySum),
-            String.format(resources.getString(R.string.dialog_plus_category_hint), categorySum)
+            resources.getString(R.string.dialog_plus_category_hint)
         ){ responseType, number ->
             when(responseType){
                 NumberEditTextDialog.ResponseType.YES -> {
@@ -203,8 +203,34 @@ class MainActivity : AppCompatActivity() {
             showNeedToSelectRow()
             return
         }
-        //TODO
-        updateAll()
+        val cashCategory = categories[selectedCategoryPosition]
+        val categoryName = cashCategory.name
+        val categorySum = cashCategory.sum
+
+        val dialog = NumberEditTextDialog(this)
+        val context = this
+        dialog.show(
+            String.format(resources.getString(R.string.dialog_minus_category_title), categoryName, categorySum),
+            String.format(resources.getString(R.string.dialog_minus_category_hint), categorySum)
+        ){ responseType, number ->
+            when(responseType){
+                NumberEditTextDialog.ResponseType.YES -> {
+                    if(number<0){
+                        Toast.makeText(context, resources.getString(R.string.toast_minus_negative_forbidden), Toast.LENGTH_SHORT).show()
+                        return@show
+                    }
+                    if(number > categorySum){
+                        Toast.makeText(context, resources.getString(R.string.toast_minus_too_much_forbidden), Toast.LENGTH_SHORT).show()
+                        return@show
+                    }
+                    cashCategory.sum-= number
+                    selectedCategoryPosition = -1
+                    updateAll()
+                }
+                NumberEditTextDialog.ResponseType.NO ->{}
+                NumberEditTextDialog.ResponseType.CANCEL->{}
+            }
+        }
     }
 
     private fun clearAction(){
