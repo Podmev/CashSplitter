@@ -1,9 +1,11 @@
 package com.podmev.cashsplitter
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +13,9 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.fragment.app.DialogFragment
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
-import java.io.BufferedWriter
 import java.io.File
-import java.io.FileWriter
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showNeedToSelectRow(){
-        Toast.makeText(this, "Choose row by clicking", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.toast_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
     private fun updateSelectedCategoryPosition(plainPosition: Int){
         val rowPos = plainPosition / binding.gridCategories.numColumns
@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //actions
-    fun plusAction(){
+    private fun plusAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun minusAction(){
+    private fun minusAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun clearAction(){
+    private fun clearAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
@@ -192,13 +192,13 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun downAction(){
+    private fun downAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
         }
         if(selectedCategoryPosition==categories.lastIndex){
-            Toast.makeText(this, "This category cannot already go down", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_cannot_go_down, Toast.LENGTH_SHORT).show()
             return
         }
         val curCategory = categories[selectedCategoryPosition]
@@ -209,13 +209,13 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun upAction(){
+    private fun upAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
         }
         if(selectedCategoryPosition==0){
-            Toast.makeText(this, "This category cannot already go up", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_cannot_go_up, Toast.LENGTH_SHORT).show()
             return
         }
         val curCategory = categories[selectedCategoryPosition]
@@ -225,7 +225,7 @@ class MainActivity : AppCompatActivity() {
         selectedCategoryPosition--
         updateAll()
     }
-    fun editAction(){
+    private fun editAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
@@ -234,7 +234,7 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun createAction(){
+    private fun createAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
@@ -243,15 +243,37 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    fun deleteAction(){
+    private fun deleteAction(){
         if(selectedCategoryPosition == -1){
             showNeedToSelectRow()
             return
         }
-        //TODO
-        updateAll()
-    }
+        val cashCategory = categories[selectedCategoryPosition]
+        val categoryName = cashCategory.name
 
+        if(!cashCategory.canBeDeleted){
+            Toast.makeText(this,
+                String.format(resources.getString(R.string.toast_cannot_delete_category,categoryName)),
+                Toast.LENGTH_SHORT).show()
+            return
+        }
+        val dialog = CustomDialog(this)
+        dialog.show(
+            resources.getString(R.string.dialog_delete_category_title),
+            String.format(resources.getString(R.string.dialog_delete_category_message), categoryName)
+        ){
+            when(it){
+                CustomDialog.ResponseType.YES -> {
+                    categories.removeAt(selectedCategoryPosition)
+                    //unselect position
+                    selectedCategoryPosition = -1
+                    updateAll()
+                }
+                CustomDialog.ResponseType.NO ->{}
+                CustomDialog.ResponseType.CANCEL ->{}
+            }
+        }
+    }
 
 
 }

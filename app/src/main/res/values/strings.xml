@@ -14,4 +14,18 @@
 
     <string name="dumpFilePath">dumpfile.txt</string>
 
+    <string name="toast_cannot_go_down">This category cannot already go down</string>
+    <string name="toast_cannot_go_up">This category cannot already go up</string>
+    <string name="toast_need_to_select_category">Choose row by clicking</string>
+    <string name="toast_cannot_delete_category">You cannot delete category %1$s</string>
+    <string name="toast_cannot_edit_category">You cannot edit category %1$s</string>
+
+    <string name="dialog_delete_category_title">Delete category</string>
+    <string name="dialog_delete_category_message">Do you really want to delete category %1$s?</string>
+
+    <string name="dialog_clean_category_title">Clean category</string>
+    <string name="dialog_clean_category_message">Do you really want to clean sum for category %1$s?</string>
+    <string name="dialog_button_positive">Yes</string>
+    <string name="dialog_button_negative">No</string>
+
 </resources>
