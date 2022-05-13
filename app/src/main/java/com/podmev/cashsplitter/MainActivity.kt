@@ -194,6 +194,9 @@ class MainActivity : AppCompatActivity() {
                 NumberEditTextDialog.ResponseType.YES -> {
                     if(number<0){
                         Toast.makeText(context, resources.getString(R.string.toast_plus_negative_forbidden), Toast.LENGTH_SHORT).show()
+                        //unselect position
+                        selectedCategoryPosition = -1
+                        updateAll()
                         return@show
                     }
                     cashCategory.sum+= number
@@ -225,10 +228,16 @@ class MainActivity : AppCompatActivity() {
                 NumberEditTextDialog.ResponseType.YES -> {
                     if(number<0){
                         Toast.makeText(context, resources.getString(R.string.toast_minus_negative_forbidden), Toast.LENGTH_SHORT).show()
+                        //unselect position
+                        selectedCategoryPosition = -1
+                        updateAll()
                         return@show
                     }
                     if(number > categorySum){
                         Toast.makeText(context, resources.getString(R.string.toast_minus_too_much_forbidden), Toast.LENGTH_SHORT).show()
+                        //unselect position
+                        selectedCategoryPosition = -1
+                        updateAll()
                         return@show
                     }
                     cashCategory.sum-= number
@@ -321,11 +330,17 @@ class MainActivity : AppCompatActivity() {
                 EditTextDialog.ResponseType.YES -> {
                     if(text==categoryName){
                         Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_no_changes), text), Toast.LENGTH_SHORT).show()
+                        //unselect position
+                        selectedCategoryPosition = -1
+                        updateAll()
                         return@show
                     }
                     val foundExistedCategory = categories.find{it.name==text}
                     if(foundExistedCategory!=null){
                         Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_collision), text), Toast.LENGTH_SHORT).show()
+                        //unselect position
+                        selectedCategoryPosition = -1
+                        updateAll()
                         return@show
                     }
                     cashCategory.name = text
