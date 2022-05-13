@@ -7,6 +7,7 @@ import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     var color = Color.TRANSPARENT
                     val row = selectedCategoryPosition
                     val numColumns = binding.gridCategories.numColumns
-                    if(position in row*numColumns until row*(numColumns+1)){
+                    if(position in row*numColumns until (row+1)*numColumns){
                         //in selected row
                         color = Color.YELLOW
                     }
@@ -49,15 +50,26 @@ class MainActivity : AppCompatActivity() {
 
             }
             binding.gridCategories.adapter = adapter
-
+            binding.gridCategories.setOnItemClickListener{
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long->
+                        updateSelectedCategoryPosition(position)
+                        adapter.notifyDataSetChanged()
+            }
             //for test now - put stub data
-            selectedCategoryPosition=2
             updateWithNewCategories(createSimpleCategories())
 
             //end of testing
             Log.i("mainActivity", "onCreate: finished")
         }catch (e:Throwable){
             Log.e("mainActivity", "onCreate failed: ${e.javaClass}, ${e.message}")
+        }
+    }
+    private fun updateSelectedCategoryPosition(plainPosition: Int){
+        val rowPos = plainPosition / binding.gridCategories.numColumns
+        if(selectedCategoryPosition==rowPos){
+            selectedCategoryPosition = -1
+        } else{
+          selectedCategoryPosition = rowPos
         }
     }
 
