@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">CashSplitter</string>
+    <string name="action_settings">Настройки</string>
+
+    <string name="button_plus_text">+</string>
+    <string name="button_minus_text">-</string>
+    <string name="button_clear_text">↻</string>
+    <string name="button_down_text">⇓</string>
+    <string name="button_up_text">⇑</string>
+    <string name="button_edit_text">✎</string>
+    <string name="button_create_text">📝</string>
+    <string name="button_delete_text">❌</string>
+    <string name="textView_total_text">Всего: %1$s</string>
+
+    <string name="dumpFilePath">dumpfile.txt</string>
+
+    <string name="toast_cannot_go_down">Эту категорию уже нельзя опускать вниз</string>
+    <string name="toast_cannot_go_up">Эту категорию уже нельзя поднимать вверх</string>
+    <string name="toast_need_to_select_category">Выберете строчку, кликнув на неё</string>
+    <string name="toast_dont_need_to_select_category">Уберите выбор строки</string>
+    <string name="toast_cannot_delete_category">Вы не можете удалить категорию %1$s</string>
+    <string name="toast_cannot_edit_category">Вы не можете реадктировать категорию %1$s</string>
+    <string name="toast_create_collision">Категория %1$s уже существует</string>
+    <string name="toast_edit_collision">Категория %1$s  уже существует</string>
+    <string name="toast_edit_no_changes">Имя категория %1$s не поменялось</string>
+    <string name="toast_plus_negative_forbidden">Вы не может добавить отрицательную сумму</string>
+    <string name="toast_minus_negative_forbidden">Вы не может вычесть отрицательную сумму</string>
+    <string name="toast_minus_too_much_forbidden">Вы не можете вычесть больше, чем сейчас есть</string>
+
+    <string name="dialog_delete_category_title">Удалить категорию</string>
+    <string name="dialog_delete_category_message">Вы уверены, что хотите удалить категорию %1$s?</string>
+
+    <string name="dialog_clear_category_title">Обнулить сумму категории</string>
+    <string name="dialog_clear_category_message">Вы уверены, что хотите обнулить сумму категории %1$s?</string>
+
+    <string name="dialog_create_category_title">Создать новую категорию</string>
+    <string name="dialog_create_category_hint">Введите название новой категории</string>
+
+    <string name="dialog_edit_category_title">Изменить название категории %1$s с суммой %2$, .2f</string>
+    <string name="dialog_edit_category_hint">Введите новое название для категории вместо %1$s</string>
+
+    <string name="dialog_plus_category_title">Добавить сумму к категории %1$s с текущей суммой %2$, .2f</string>
+    <string name="dialog_plus_category_hint">Введите добавляемую сумму</string>
+
+    <string name="dialog_minus_category_title">Вычесть сумму из категории %1$s с текущей суммой %2$, .2f</string>
+    <string name="dialog_minus_category_hint">Введите вычитаемую сумму от 0 до %1$, .2f</string>
+
+    <string name="dialog_button_positive">Да</string>
+    <string name="dialog_button_negative">Нет</string>
+
+
+    <string name="category_default_name">Другое</string>
+
+</resources>
