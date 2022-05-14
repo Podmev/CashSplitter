@@ -1,4 +1,4 @@
-package com.podmev.cashsplitter
+package com.podmev.cashsplitter.data
 
 /*Main entity for cash category - each category shows one line in grid*/
 data class CashCategory(var name:String, var sum: Double, var canNameBeEdited: Boolean, var canBeDeleted: Boolean) {
@@ -11,7 +11,7 @@ const val recordDelimiter:String = "\n"
 fun CashCategory.toLine():String =
     listOf(name, sum, canNameBeEdited, canBeDeleted).joinToString(fieldDelimiter)
 
-fun parseCashCategoryFromLine(line: String):CashCategory {
+fun parseCashCategoryFromLine(line: String): CashCategory {
     val list = line.split(fieldDelimiter)
 
     return CashCategory(
