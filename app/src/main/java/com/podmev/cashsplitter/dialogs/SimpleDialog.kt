@@ -1,7 +1,8 @@
-package com.podmev.cashsplitter
+package com.podmev.cashsplitter.dialogs
 
 import android.app.AlertDialog
 import android.content.Context
+import com.podmev.cashsplitter.R
 
 class SimpleDialog(context: Context) : AlertDialog.Builder(context) {
 
@@ -19,12 +20,12 @@ class SimpleDialog(context: Context) : AlertDialog.Builder(context) {
         onResponse = listener
 
         // performing positive action
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton(R.string.dialog_button_positive) { _, _ ->
             onResponse(ResponseType.YES)
         }
 
         // performing negative action
-        builder.setNegativeButton("No") { _, _ ->
+        builder.setNegativeButton(R.string.dialog_button_negative) { _, _ ->
             onResponse(ResponseType.NO)
         }
 

@@ -1,9 +1,10 @@
-package com.podmev.cashsplitter
+package com.podmev.cashsplitter.dialogs
 
 import android.app.AlertDialog
 import android.content.Context
 import android.text.InputType
 import android.widget.EditText
+import com.podmev.cashsplitter.R
 
 class EditTextDialog(context: Context) : AlertDialog.Builder(context) {
 
@@ -26,12 +27,12 @@ class EditTextDialog(context: Context) : AlertDialog.Builder(context) {
         onResponse = listener
 
         // performing positive action
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton(R.string.dialog_button_positive) { _, _ ->
             onResponse(ResponseType.YES, input.text.toString())
         }
 
         // performing negative action
-        builder.setNegativeButton("No") { _, _ ->
+        builder.setNegativeButton(R.string.dialog_button_negative) { _, _ ->
             onResponse(ResponseType.NO, input.text.toString())
         }
 

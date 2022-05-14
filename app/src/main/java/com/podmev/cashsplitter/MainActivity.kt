@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import com.podmev.cashsplitter.dialogs.EditTextDialog
+import com.podmev.cashsplitter.dialogs.NumberEditTextDialog
+import com.podmev.cashsplitter.dialogs.SimpleDialog
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -169,7 +172,8 @@ class MainActivity : AppCompatActivity() {
     fun uploadFromFileOrDefault(){
         uploadFromFile()
         if(categories.isEmpty()) {
-            categories.add(CashCategory("Other", 0.0, false, false))
+            val defaultCategoryName = resources.getString(R.string.category_default_name)
+            categories.add(CashCategory(defaultCategoryName, 0.0, false, false))
             updateAll()
         }
     }
