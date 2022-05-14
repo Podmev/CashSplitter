@@ -20,7 +20,7 @@
     <string name="toast_dont_need_to_select_category">Deselecione linha</string>
     <string name="toast_cannot_delete_category">Você não pode deletar a categoria %1$s</string>
     <string name="toast_cannot_edit_category">Você não pode editar a categoria %1$s</string>
-    <string name="toast_create_collision">A categoria %1$s já existe /string>
+    <string name="toast_create_collision">A categoria %1$s já existe </string>
     <string name="toast_edit_collision">A categoria %1$s já existe </string>
     <string name="toast_edit_no_changes">O nome da categoria %1$s não mudou</string>
     <string name="toast_plus_negative_forbidden">Não é possível adicionar valor negativo</string>
@@ -50,5 +50,4 @@
 
 
     <string name="category_default_name">Outro</string>
-
 </resources>
