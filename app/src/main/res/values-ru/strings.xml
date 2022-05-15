@@ -10,7 +10,10 @@
     <string name="button_edit_text">✎</string>
     <string name="button_create_text">📝</string>
     <string name="button_delete_text">❌</string>
+
     <string name="textView_total_text">Всего: %1$s</string>
+    <string name="textView_available_text">Доступно: %1$s</string>
+    <string name="textView_not_planned_text">Не запланировано: %1$s</string>
 
     <string name="dumpFilePath">dumpfile.txt</string>
 
@@ -44,6 +47,9 @@
 
     <string name="dialog_minus_category_title">Вычесть сумму из категории %1$s с текущей суммой %2$, .2f</string>
     <string name="dialog_minus_category_hint">Введите вычитаемую сумму от 0 до %1$, .2f</string>
+
+    <string name="dialog_edit_available_sum_title">Измените доступную сумму, сейчас значение %1$, .2f</string>
+    <string name="dialog_edit_available_sum_hint">Введите доступную сумму</string>
 
     <string name="dialog_button_positive">Да</string>
     <string name="dialog_button_negative">Нет</string>

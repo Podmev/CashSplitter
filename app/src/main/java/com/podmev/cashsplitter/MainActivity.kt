@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
             binding.buttonEdit.setOnClickListener{editAction(dataState)}
             binding.buttonCreate.setOnClickListener{createAction(dataState)}
             binding.buttonDelete.setOnClickListener{deleteAction(dataState)}
+            //text view actions
+            binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
 
             uploadFromFileOrDefault(dataState)
             //for test now - put stub data
@@ -125,6 +127,17 @@ class MainActivity : AppCompatActivity() {
         val totalText = String.format(resources.getString(R.string.textView_total_text), state.calcTotalSum())
         binding.textViewTotal.text = totalText
         Log.i("mainActivity", "updateView: finished updating textViewTotal: $totalText")
+
+        Log.i("mainActivity", "updateView: started updating textViewAvailable")
+        val availableText = String.format(resources.getString(R.string.textView_available_text), state.availableSum)
+        binding.textViewAvailable.text = availableText
+        Log.i("mainActivity", "updateView: finished updating textViewAvailable: $availableText")
+
+        Log.i("mainActivity", "updateView: started updating textViewNotPlanned")
+        val notPlannedText = String.format(resources.getString(R.string.textView_not_planned_text), state.calcNotPlannedSum())
+        binding.textViewNotPlanned.text = notPlannedText
+        Log.i("mainActivity", "updateView: finished updating textViewNotPlanned: $notPlannedText")
+
         Log.i("mainActivity", "updateView: finished")
     }
 
@@ -177,6 +190,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     //actions
+
+    private fun setAvailableAction(state: DataState){
+        val dialog = NumberEditTextDialog(this)
+        dialog.show(
+            String.format(resources.getString(R.string.dialog_edit_available_sum_title), state.availableSum),
+            resources.getString(R.string.dialog_edit_available_sum_hint)
+        ){ responseType, number ->
+            when(responseType){
+                NumberEditTextDialog.ResponseType.YES -> {
+                    //value can be negative
+                    state.availableSum = number
+                    updateAll()
+                }
+                NumberEditTextDialog.ResponseType.NO ->{}
+                NumberEditTextDialog.ResponseType.CANCEL->{}
+            }
+        }
+    }
+
     private fun plusAction(state: DataState){
         if(!state.isSelectedCategory()){
             showNeedToSelectRow()

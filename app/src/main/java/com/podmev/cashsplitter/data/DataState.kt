@@ -8,7 +8,7 @@ data class DataState(
     var availableSum:Double){
 
     fun calcTotalSum():Double = totalSumByCategories(categories)
-    fun calcNotPlannedSum():Double = calcTotalSum() - availableSum
+    fun calcNotPlannedSum():Double = availableSum - calcTotalSum()
     //use carefully -> can be null
     fun curCategory() = categories[selectedCategoryPosition]
 

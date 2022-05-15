@@ -10,7 +10,10 @@
     <string name="button_edit_text">✎</string>
     <string name="button_create_text">📝</string>
     <string name="button_delete_text">❌</string>
+
     <string name="textView_total_text">Total: %1$s</string>
+    <string name="textView_available_text">Disponível: %1$s</string>
+    <string name="textView_not_planned_text">Não planejado: %1$s</string>
 
     <string name="dumpFilePath">dumpfile.txt</string>
 
@@ -45,9 +48,11 @@
     <string name="dialog_minus_category_title">Subtrair valor da categoria %1$s com o valor %2$, .2f</string>
     <string name="dialog_minus_category_hint">Digitar subtraindo o valor de 0 até %1$, .2f</string>
 
+    <string name="dialog_edit_available_sum_title">Editar valor disponível, o atual é %1$, .2f</string>
+    <string name="dialog_edit_available_sum_hint">Digitar novo valor disponível</string>
+
     <string name="dialog_button_positive">Sim</string>
     <string name="dialog_button_negative">Não</string>
-
 
     <string name="category_default_name">Outro</string>
 </resources>

@@ -13,6 +13,20 @@
         android:id="@+id/textView_total"
         android:text="@string/textView_total_text"
     />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/textView_available"
+        android:text="@string/textView_available_text"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/textView_not_planned"
+        android:text="@string/textView_not_planned_text"
+    />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
