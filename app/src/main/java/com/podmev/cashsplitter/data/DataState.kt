@@ -3,13 +3,44 @@ package com.podmev.cashsplitter.data
 //TODO private fields and safe setters and getters
 //TODO make normal serialization through json lib
 data class DataState(
-    var categories:MutableList<CashCategory> = mutableListOf(),
-    var selectedCategoryPosition:Int = -1,
-    var availableSum:Double = 0.0){
+    var categories:MutableList<CashCategory>,
+    var selectedCategoryPosition:Int,
+    var availableSum:Double){
 
     fun calcTotalSum():Double = totalSumByCategories(categories)
     fun calcNotPlannedSum():Double = calcTotalSum() - availableSum
+    //use carefully -> can be null
+    fun curCategory() = categories[selectedCategoryPosition]
+
+    fun unselectCategory(){
+        selectedCategoryPosition = UNSELECTED_CATEGORY_POSITION
+    }
+
+    fun isSelectedCategory():Boolean = selectedCategoryPosition != UNSELECTED_CATEGORY_POSITION
+
+    fun moveSelectedCategoryDown(){
+        val curCategory = curCategory()
+        val nextCategory = categories[selectedCategoryPosition+1]
+        categories[selectedCategoryPosition] = nextCategory
+        categories[selectedCategoryPosition+1] = curCategory
+        selectedCategoryPosition++
+    }
+
+    fun moveSelectedCategoryUp(){
+        val curCategory = curCategory()
+        val prevCategory = categories[selectedCategoryPosition-1]
+        categories[selectedCategoryPosition] = prevCategory
+        categories[selectedCategoryPosition-1] = curCategory
+        selectedCategoryPosition--
+    }
+
+    companion object {
+        const val UNSELECTED_CATEGORY_POSITION = -1
+    }
 }
+
+fun createEmptyDataState() =
+    DataState(mutableListOf(), DataState.UNSELECTED_CATEGORY_POSITION, 0.0)
 
 fun DataState.serialize():String =
     listOf(selectedCategoryPosition, availableSum, categories.toLines()).joinToString(recordDelimiter)
@@ -21,5 +52,14 @@ fun deserializeCashCategoriesFromString(lines: String):DataState {
     val availableSum = list.component2().toDouble()
     val categories: List<CashCategory> = parseCashCategoriesFromLines(list.component3())
     return DataState(categories.toMutableList(), selectedCategoryPosition, availableSum)
+}
+
+fun DataState.reloadWithAnother(otherState: DataState){
+    categories.apply {
+        categories.clear()
+        categories.addAll(otherState.categories)
+    }
+    selectedCategoryPosition = otherState.selectedCategoryPosition
+    availableSum = otherState.availableSum
 }
 
