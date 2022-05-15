@@ -45,7 +45,7 @@
     <string name="dialog_plus_category_title">Adicionar valor à categoria %1$s</string>
     <string name="dialog_plus_category_hint">Inserir valor</string>
 
-    <string name="dialog_minus_category_title">Subtrair valor da categoria %1$s com o valor %2$, .2f</string>
+    <string name="dialog_minus_category_title">Subtrair valor da categoria %1$s</string>
     <string name="dialog_minus_category_hint">Substair valor de 0 até %1$, .2f</string>
 
     <string name="dialog_edit_available_sum_title">Editar valor disponível, o atual é %1$, .2f</string>
