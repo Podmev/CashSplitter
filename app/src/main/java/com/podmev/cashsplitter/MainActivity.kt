@@ -216,12 +216,11 @@ class MainActivity : AppCompatActivity() {
         }
         val cashCategory = state.curCategory()
         val categoryName = cashCategory.name
-        val categorySum = cashCategory.sum
 
         val dialog = NumberEditTextDialog(this)
         val context = this
         dialog.show(
-            String.format(resources.getString(R.string.dialog_plus_category_title), categoryName, categorySum),
+            String.format(resources.getString(R.string.dialog_plus_category_title), categoryName),
             resources.getString(R.string.dialog_plus_category_hint)
         ){ responseType, number ->
             when(responseType){
@@ -255,7 +254,7 @@ class MainActivity : AppCompatActivity() {
         val dialog = NumberEditTextDialog(this)
         val context = this
         dialog.show(
-            String.format(resources.getString(R.string.dialog_minus_category_title), categoryName, categorySum),
+            String.format(resources.getString(R.string.dialog_minus_category_title), categoryName),
             String.format(resources.getString(R.string.dialog_minus_category_hint), categorySum)
         ){ responseType, number ->
             when(responseType){
@@ -343,14 +342,13 @@ class MainActivity : AppCompatActivity() {
         }
         val cashCategory = state.curCategory()
         val categoryName = cashCategory.name
-        val categorySum = cashCategory.sum
 
         val dialog = EditTextDialog(this)
         val context = this
         dialog.show(
-            String.format(resources.getString(R.string.dialog_edit_category_title), categoryName, categorySum),
+            String.format(resources.getString(R.string.dialog_edit_category_title), categoryName),
             categoryName,
-            String.format(resources.getString(R.string.dialog_edit_category_hint), categoryName)
+            resources.getString(R.string.dialog_edit_category_hint)
         ){ responseType, text ->
             when(responseType){
                 EditTextDialog.ResponseType.YES -> {

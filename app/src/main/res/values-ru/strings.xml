@@ -21,8 +21,8 @@
     <string name="toast_cannot_go_up">Эту категорию уже нельзя поднимать вверх</string>
     <string name="toast_need_to_select_category">Выберете строчку, кликнув на неё</string>
     <string name="toast_dont_need_to_select_category">Уберите выбор строки</string>
-    <string name="toast_cannot_delete_category">Вы не можете удалить категорию %1$s</string>
-    <string name="toast_cannot_edit_category">Вы не можете реадктировать категорию %1$s</string>
+    <string name="toast_cannot_delete_category">Невозможно удалить категорию %1$s</string>
+    <string name="toast_cannot_edit_category">невозможно редактировать категорию %1$s</string>
     <string name="toast_create_collision">Категория %1$s уже существует</string>
     <string name="toast_edit_collision">Категория %1$s  уже существует</string>
     <string name="toast_edit_no_changes">Имя категория %1$s не поменялось</string>
@@ -39,14 +39,14 @@
     <string name="dialog_create_category_title">Создать новую категорию</string>
     <string name="dialog_create_category_hint">Введите название новой категории</string>
 
-    <string name="dialog_edit_category_title">Изменить название категории %1$s с суммой %2$, .2f</string>
+    <string name="dialog_edit_category_title">Изменить название категории %1$s</string>
     <string name="dialog_edit_category_hint">Введите новое название для категории вместо %1$s</string>
 
-    <string name="dialog_plus_category_title">Добавить сумму к категории %1$s с текущей суммой %2$, .2f</string>
-    <string name="dialog_plus_category_hint">Введите добавляемую сумму</string>
+    <string name="dialog_plus_category_title">Добавить сумму к категории %1$s</string>
+    <string name="dialog_plus_category_hint">Введите значение</string>
 
-    <string name="dialog_minus_category_title">Вычесть сумму из категории %1$s с текущей суммой %2$, .2f</string>
-    <string name="dialog_minus_category_hint">Введите вычитаемую сумму от 0 до %1$, .2f</string>
+    <string name="dialog_minus_category_title">Вычесть сумму из категории %1$s</string>
+    <string name="dialog_minus_category_hint">Введите значение от 0 до %1$, .2f</string>
 
     <string name="dialog_edit_available_sum_title">Измените доступную сумму, сейчас значение %1$, .2f</string>
     <string name="dialog_edit_available_sum_hint">Введите доступную сумму</string>

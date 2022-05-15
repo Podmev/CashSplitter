@@ -21,8 +21,8 @@
     <string name="toast_cannot_go_up">This category cannot already go up</string>
     <string name="toast_need_to_select_category">Choose row by clicking</string>
     <string name="toast_dont_need_to_select_category">Unselect row</string>
-    <string name="toast_cannot_delete_category">You cannot delete category %1$s</string>
-    <string name="toast_cannot_edit_category">You cannot edit category %1$s</string>
+    <string name="toast_cannot_delete_category">It is impossible delete category %1$s</string>
+    <string name="toast_cannot_edit_category">It is impossible edit category %1$s</string>
     <string name="toast_create_collision">Category %1$s already exists</string>
     <string name="toast_edit_collision">Category %1$s already exists</string>
     <string name="toast_edit_no_changes">Category %1$s name didn\'t change</string>
@@ -39,14 +39,14 @@
     <string name="dialog_create_category_title">Create new category</string>
     <string name="dialog_create_category_hint">Type new category name</string>
 
-    <string name="dialog_edit_category_title">Edit category %1$s with sum %2$, .2f</string>
-    <string name="dialog_edit_category_hint">Type new category name instead of %1$s</string>
+    <string name="dialog_edit_category_title">Edit category %1$s</string>
+    <string name="dialog_edit_category_hint">Type new category name</string>
 
-    <string name="dialog_plus_category_title">Add value to category %1$s with sum %2$, .2f</string>
-    <string name="dialog_plus_category_hint">Type adding value</string>
+    <string name="dialog_plus_category_title">Add value to category %1$s</string>
+    <string name="dialog_plus_category_hint">Type value</string>
 
-    <string name="dialog_minus_category_title">Subtract value to category %1$s with sum %2$, .2f</string>
-    <string name="dialog_minus_category_hint">Type subtracting value from 0 till %1$, .2f</string>
+    <string name="dialog_minus_category_title">Subtract value to category %1$s</string>
+    <string name="dialog_minus_category_hint">Type value from 0 till %1$, .2f</string>
 
     <string name="dialog_edit_available_sum_title">Edit available sum, current is %1$, .2f</string>
     <string name="dialog_edit_available_sum_hint">Type new available sum</string>

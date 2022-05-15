@@ -21,8 +21,8 @@
     <string name="toast_cannot_go_up">Esta categoria não pode subir</string>
     <string name="toast_need_to_select_category">Clique para escolher a linha</string>
     <string name="toast_dont_need_to_select_category">Deselecione linha</string>
-    <string name="toast_cannot_delete_category">Você não pode deletar a categoria %1$s</string>
-    <string name="toast_cannot_edit_category">Você não pode editar a categoria %1$s</string>
+    <string name="toast_cannot_delete_category">Não é possível deletar a categoria %1$s</string>
+    <string name="toast_cannot_edit_category">Não é possível editar a categoria %1$s</string>
     <string name="toast_create_collision">A categoria %1$s já existe </string>
     <string name="toast_edit_collision">A categoria %1$s já existe </string>
     <string name="toast_edit_no_changes">O nome da categoria %1$s não mudou</string>
@@ -39,14 +39,14 @@
     <string name="dialog_create_category_title">Criar nova categoria</string>
     <string name="dialog_create_category_hint">Inserir nome da nova categoria</string>
 
-    <string name="dialog_edit_category_title">Editar categoria %1$s com o valor %2$, .2f</string>
-    <string name="dialog_edit_category_hint">Inserir novo nome da categoria ao invés de %1$s</string>
+    <string name="dialog_edit_category_title">Editar categoria %1$s</string>
+    <string name="dialog_edit_category_hint">Inserir novo nome da categoria</string>
 
-    <string name="dialog_plus_category_title">Adicionar valor à categoria %1$s com o valor %2$, .2f</string>
-    <string name="dialog_plus_category_hint">Digitar inserindo o valor</string>
+    <string name="dialog_plus_category_title">Adicionar valor à categoria %1$s</string>
+    <string name="dialog_plus_category_hint">Inserir valor</string>
 
     <string name="dialog_minus_category_title">Subtrair valor da categoria %1$s com o valor %2$, .2f</string>
-    <string name="dialog_minus_category_hint">Digitar subtraindo o valor de 0 até %1$, .2f</string>
+    <string name="dialog_minus_category_hint">Substair valor de 0 até %1$, .2f</string>
 
     <string name="dialog_edit_available_sum_title">Editar valor disponível, o atual é %1$, .2f</string>
     <string name="dialog_edit_available_sum_hint">Digitar novo valor disponível</string>
