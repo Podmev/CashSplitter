@@ -1,21 +1,8 @@
 <resources>
-    <string name="app_name">CashSplitter</string>
     <string name="action_settings">Настройки</string>
-
-    <string name="button_plus_text">+</string>
-    <string name="button_minus_text">-</string>
-    <string name="button_clear_text">↻</string>
-    <string name="button_down_text">⇓</string>
-    <string name="button_up_text">⇑</string>
-    <string name="button_edit_text">✎</string>
-    <string name="button_create_text">📝</string>
-    <string name="button_delete_text">❌</string>
-
     <string name="textView_total_text">Всего: %1$s</string>
     <string name="textView_available_text">Доступно: %1$s</string>
     <string name="textView_not_planned_text">Не запланировано: %1$s</string>
-
-    <string name="dumpFilePath">dumpfile.txt</string>
 
     <string name="toast_cannot_go_down">Эту категорию уже нельзя опускать вниз</string>
     <string name="toast_cannot_go_up">Эту категорию уже нельзя поднимать вверх</string>
@@ -56,5 +43,10 @@
 
 
     <string name="category_default_name">Другое</string>
+    <string name="dialog_lock_category_title">Заблокировать категорию</string>
+    <string name="dialog_lock_category_message">Вы уверены, что хотите заблокировать категорию %1$s?</string>
+    <string name="dialog_unlock_category_message">Вы уверены, что хотите разблокировать категорию %1$s?</string>
+    <string name="dialog_unlock_category_title">Разблокировать категорию</string>
+    <string name="toast_cannot_change_locked_category">Разблокируйте категорию для изменений</string>
 
 </resources>

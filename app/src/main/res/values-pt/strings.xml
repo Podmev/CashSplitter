@@ -1,21 +1,9 @@
 <resources>
-    <string name="app_name">CashSplitter</string>
     <string name="action_settings">Configurações</string>
-
-    <string name="button_plus_text">+</string>
-    <string name="button_minus_text">-</string>
-    <string name="button_clear_text">↻</string>
-    <string name="button_down_text">⇓</string>
-    <string name="button_up_text">⇑</string>
-    <string name="button_edit_text">✎</string>
-    <string name="button_create_text">📝</string>
-    <string name="button_delete_text">❌</string>
 
     <string name="textView_total_text">Total: %1$s</string>
     <string name="textView_available_text">Disponível: %1$s</string>
     <string name="textView_not_planned_text">Não planejado: %1$s</string>
-
-    <string name="dumpFilePath">dumpfile.txt</string>
 
     <string name="toast_cannot_go_down">Esta categoria não pode descer</string>
     <string name="toast_cannot_go_up">Esta categoria não pode subir</string>
@@ -55,4 +43,9 @@
     <string name="dialog_button_negative">Não</string>
 
     <string name="category_default_name">Outro</string>
+    <string name="dialog_lock_category_title">Trancar categoria</string>
+    <string name="dialog_unlock_category_title">Destrancar categoria</string>
+    <string name="dialog_lock_category_message">Tem certeza que deseja trancar o valor da categoria %1$s?</string>
+    <string name="dialog_unlock_category_message">Tem certeza que deseja destrancar o valor da categoria %1$s?</string>
+    <string name="toast_cannot_change_locked_category">Destranca categoria para editar</string>
 </resources>

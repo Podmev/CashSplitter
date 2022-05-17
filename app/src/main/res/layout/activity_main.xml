@@ -34,22 +34,33 @@
         android:id="@+id/buttonPanel">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button_plus"
             android:text="@string/button_plus_text"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            />
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button_minus"
             android:text="@string/button_minus_text"
+            android:layout_weight="1"
             style="?android:attr/buttonBarButtonStyle"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button_clear"
             android:text="@string/button_clear_text"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_lock"
+            android:text="@string/button_lock_text"
+            android:layout_weight="1"
             style="?android:attr/buttonBarButtonStyle"/>
     </LinearLayout>
     <LinearLayout
