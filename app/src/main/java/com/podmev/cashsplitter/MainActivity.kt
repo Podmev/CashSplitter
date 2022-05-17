@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity() {
         val selectedRow = state.selectedCategoryPosition
         val numColumns = binding.gridCategories.numColumns
         val curRow = position / numColumns
-        val category = state.curCategory()
-        val locked = category.locked
+        val category: CashCategory? = if(state.isSelectedCategory()) state.curCategory() else null
+        val locked = category?.locked ?: false
         val selected = selectedRow==curRow
 
         var color = Color.TRANSPARENT
