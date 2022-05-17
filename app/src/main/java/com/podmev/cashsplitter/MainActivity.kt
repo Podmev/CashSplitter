@@ -48,17 +48,16 @@ class MainActivity : AppCompatActivity() {
                         updateSelectedCategoryPosition(dataState, position)
                         adapter.notifyDataSetChanged()
             }
-            //first line of buttons
             binding.buttonPlus.setOnClickListener{plusAction(dataState)}
             binding.buttonMinus.setOnClickListener{minusAction(dataState)}
             binding.buttonClear.setOnClickListener{clearAction(dataState)}
             binding.buttonLock.setOnClickListener{lockAction(dataState)}
             binding.buttonCreate.setOnClickListener{createAction(dataState)}
-            //second line of buttons
             binding.buttonDown.setOnClickListener{downAction(dataState)}
             binding.buttonUp.setOnClickListener{upAction(dataState)}
             binding.buttonEdit.setOnClickListener{editAction(dataState)}
             binding.buttonDelete.setOnClickListener{deleteAction(dataState)}
+            //TODO add erase method
             //text view actions
             binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
 
@@ -82,19 +81,19 @@ class MainActivity : AppCompatActivity() {
         val selectedRow = state.selectedCategoryPosition
         val numColumns = binding.gridCategories.numColumns
         val curRow = position / numColumns
-        val category: CashCategory? = if(state.isSelectedCategory()) state.curCategory() else null
-        val locked = category?.locked ?: false
-        val selected = selectedRow==curRow
+        val curCategory: CashCategory = state.categories[curRow]
+        val curLocked = curCategory.locked
+        val curSelected = selectedRow==curRow
 
         var color = Color.TRANSPARENT
-        if(selected){
+        if(curSelected){
             //in selected row
             color = Color.YELLOW
             //locked and selected row is yellow anyway
         } else{
-            if(locked){
+            if(curLocked){
                 //in locked row
-                color = Color.blue(128)
+                color = Color.GRAY
             }
         }
         view.setBackgroundColor(color)
@@ -330,29 +329,55 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun lockAction(state: DataState){
-        //TODO()
         if(!state.isSelectedCategory()){
             showNeedToSelectRow()
             return
         }
         val cashCategory = state.curCategory()
         val categoryName = cashCategory.name
-
-        val dialog = SimpleDialog(this)
-        dialog.show(
-            resources.getString(R.string.dialog_clear_category_title),
-            String.format(resources.getString(R.string.dialog_clear_category_message), categoryName)
-        ){
-            when(it){
-                SimpleDialog.ResponseType.YES -> {
-                    //clear here the sum
-                    cashCategory.sum = 0.0
-                    //unselect position
-                    state.unselectCategory()
-                    updateAll()
+        if(cashCategory.locked) {
+            //locked -> unlock
+            val dialog = SimpleDialog(this)
+            dialog.show(
+                resources.getString(R.string.dialog_unlock_category_title),
+                String.format(
+                    resources.getString(R.string.dialog_unlock_category_message),
+                    categoryName
+                )
+            ) {
+                when (it) {
+                    SimpleDialog.ResponseType.YES -> {
+                        //unlock category
+                        cashCategory.locked = false
+                        //unselect position
+                        state.unselectCategory()
+                        updateAll()
+                    }
+                    SimpleDialog.ResponseType.NO -> {}
+                    SimpleDialog.ResponseType.CANCEL -> {}
                 }
-                SimpleDialog.ResponseType.NO ->{}
-                SimpleDialog.ResponseType.CANCEL ->{}
+            }
+        } else{
+            //unlocked -> lock
+            val dialog = SimpleDialog(this)
+            dialog.show(
+                resources.getString(R.string.dialog_lock_category_title),
+                String.format(
+                    resources.getString(R.string.dialog_lock_category_message),
+                    categoryName
+                )
+            ) {
+                when (it) {
+                    SimpleDialog.ResponseType.YES -> {
+                        //unlock category
+                        cashCategory.locked = true
+                        //unselect position
+                        state.unselectCategory()
+                        updateAll()
+                    }
+                    SimpleDialog.ResponseType.NO -> {}
+                    SimpleDialog.ResponseType.CANCEL -> {}
+                }
             }
         }
     }
