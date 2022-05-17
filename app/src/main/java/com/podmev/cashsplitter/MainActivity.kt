@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             binding.buttonUp.setOnClickListener { upAction(dataState) }
             binding.buttonEdit.setOnClickListener { editAction(dataState) }
             binding.buttonDelete.setOnClickListener { deleteAction(dataState) }
-            //TODO add erase method
+            binding.buttonErase.setOnClickListener { eraseAction(dataState) }
             //text view actions
             binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
 
@@ -212,11 +212,16 @@ class MainActivity : AppCompatActivity() {
 
     fun uploadFromFileOrDefault(state: DataState) {
         uploadFromFile(state)
+        //TODO make smarter check
         if (state.categories.isEmpty()) {
-            val defaultCategoryName = resources.getString(R.string.category_default_name)
-            state.categories.add(CashCategory(defaultCategoryName, 0.0, false, false, false))
+            state.categories.addAll(createDefaultCategories())
             updateAll()
         }
+    }
+
+    private fun createDefaultCategories():List<CashCategory>{
+        val defaultCategoryName = resources.getString(R.string.category_default_name)
+        return listOf(CashCategory(defaultCategoryName, 0.0, false, false, false))
     }
 
     //actions
@@ -585,6 +590,57 @@ class MainActivity : AppCompatActivity() {
                 }
                 SimpleDialog.ResponseType.NO -> {}
                 SimpleDialog.ResponseType.CANCEL -> {}
+            }
+        }
+    }
+
+    /*to erase all data we need to type password in each language different*/
+    private fun eraseAction(state: DataState) {
+        for( cashCategory in state.categories) {
+            if (cashCategory.locked) {
+                showCannotChangeLockedCategory()
+                return
+            }
+        }
+        val dialog = EditTextDialog(this)
+        val context = this
+        dialog.show(
+            resources.getString(R.string.dialog_erase_category_title),
+            "",
+            String.format(
+                    resources.getString(R.string.dialog_erase_category_hint),
+                    resources.getString(R.string.dialog_erase_category_password)
+            )
+        ) { responseType, text ->
+            when (responseType) {
+                EditTextDialog.ResponseType.YES -> {
+                    if(text==resources.getString(R.string.dialog_erase_category_password)){
+                        //password is correct - we can erase data
+                        state.erase(createDefaultCategories())
+                        Toast.makeText(
+                            context,
+                            String.format(
+                                resources.getString(R.string.toast_erased_successfully),
+                                text
+                            ),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        updateAll()
+                        return@show
+                    } else{
+                        Toast.makeText(
+                            context,
+                            String.format(
+                                resources.getString(R.string.toast_didnt_erase),
+                                text
+                            ),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@show
+                    }
+                }
+                EditTextDialog.ResponseType.NO -> {}
+                EditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }

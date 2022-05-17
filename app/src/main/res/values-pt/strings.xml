@@ -48,4 +48,9 @@
     <string name="dialog_lock_category_message">Tem certeza que deseja trancar o valor da categoria %1$s?</string>
     <string name="dialog_unlock_category_message">Tem certeza que deseja destrancar o valor da categoria %1$s?</string>
     <string name="toast_cannot_change_locked_category">Destranca categoria para editar</string>
+    <string name="dialog_erase_category_hint">Inserir: %1$s</string>
+    <string name="dialog_erase_category_password">Eu quero apagar tudo</string>
+    <string name="dialog_erase_category_title">Apagar todos os dados</string>
+    <string name="toast_didnt_erase">Os dados não foram apagados</string>
+    <string name="toast_erased_successfully">Os dados foram apagados com sucesso</string>
 </resources>

@@ -48,5 +48,10 @@
     <string name="dialog_unlock_category_message">Вы уверены, что хотите разблокировать категорию %1$s?</string>
     <string name="dialog_unlock_category_title">Разблокировать категорию</string>
     <string name="toast_cannot_change_locked_category">Разблокируйте категорию для изменений</string>
+    <string name="dialog_erase_category_title">Удалить все данные</string>
+    <string name="dialog_erase_category_hint">Введите: %1$s</string>
+    <string name="dialog_erase_category_password">Я хочу удалить всё</string>
+    <string name="toast_didnt_erase">Данные не были удалены</string>
+    <string name="toast_erased_successfully">Данные успешно удалены</string>
 
 </resources>

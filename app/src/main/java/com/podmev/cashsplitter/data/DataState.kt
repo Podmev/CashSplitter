@@ -36,6 +36,15 @@ data class DataState(
         selectedCategoryPosition--
     }
 
+    fun erase(newCategories: List<CashCategory>){
+        categories.apply {
+            clear()
+            addAll(newCategories)
+        }
+        unselectCategory()
+        availableSum = 0.0
+    }
+
     companion object {
         const val UNSELECTED_CATEGORY_POSITION = -1
     }
