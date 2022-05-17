@@ -107,6 +107,10 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, R.string.toast_dont_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
 
+    private fun showCannotChangeLockedCategory(){
+        Toast.makeText(this, R.string.toast_cannot_change_locked_category, Toast.LENGTH_SHORT).show()
+    }
+
     private fun updateSelectedCategoryPosition(state: DataState, plainPosition: Int) {
         val rowPos = plainPosition / binding.gridCategories.numColumns
         if (state.selectedCategoryPosition == rowPos) {
@@ -244,6 +248,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val cashCategory = state.curCategory()
+        if(cashCategory.locked){
+            showCannotChangeLockedCategory()
+            return
+        }
         val categoryName = cashCategory.name
 
         val dialog = NumberEditTextDialog(this)
@@ -281,6 +289,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val cashCategory = state.curCategory()
+        if(cashCategory.locked){
+            showCannotChangeLockedCategory()
+            return
+        }
         val categoryName = cashCategory.name
         val categorySum = cashCategory.sum
 
@@ -330,6 +342,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val cashCategory = state.curCategory()
+        if(cashCategory.locked){
+            showCannotChangeLockedCategory()
+            return
+        }
         val categoryName = cashCategory.name
 
         val dialog = SimpleDialog(this)
@@ -438,6 +454,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val cashCategory = state.curCategory()
+        if(cashCategory.locked){
+            showCannotChangeLockedCategory()
+            return
+        }
         val categoryName = cashCategory.name
 
         val dialog = EditTextDialog(this)
@@ -529,6 +549,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val cashCategory = state.curCategory()
+        if(cashCategory.locked){
+            showCannotChangeLockedCategory()
+            return
+        }
         val categoryName = cashCategory.name
 
         if (!cashCategory.canBeDeleted) {
