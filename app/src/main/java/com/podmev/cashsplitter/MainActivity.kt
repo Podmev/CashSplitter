@@ -52,11 +52,12 @@ class MainActivity : AppCompatActivity() {
             binding.buttonPlus.setOnClickListener{plusAction(dataState)}
             binding.buttonMinus.setOnClickListener{minusAction(dataState)}
             binding.buttonClear.setOnClickListener{clearAction(dataState)}
+            binding.buttonLock.setOnClickListener{lockAction(dataState)}
+            binding.buttonCreate.setOnClickListener{createAction(dataState)}
             //second line of buttons
             binding.buttonDown.setOnClickListener{downAction(dataState)}
             binding.buttonUp.setOnClickListener{upAction(dataState)}
             binding.buttonEdit.setOnClickListener{editAction(dataState)}
-            binding.buttonCreate.setOnClickListener{createAction(dataState)}
             binding.buttonDelete.setOnClickListener{deleteAction(dataState)}
             //text view actions
             binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
@@ -72,13 +73,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*politics of changing colors of grid
+    * yellow for selected
+    * blue for locked
+    * */
     fun changeGridCellView(view:View, state: DataState, position: Int){
-        var color = Color.TRANSPARENT
-        val row = state.selectedCategoryPosition
+
+        val selectedRow = state.selectedCategoryPosition
         val numColumns = binding.gridCategories.numColumns
-        if(position in row*numColumns until (row+1)*numColumns){
+        val curRow = position / numColumns
+        val category = state.curCategory()
+        val locked = category.locked
+        val selected = selectedRow==curRow
+
+        var color = Color.TRANSPARENT
+        if(selected){
             //in selected row
             color = Color.YELLOW
+            //locked and selected row is yellow anyway
+        } else{
+            if(locked){
+                //in locked row
+                color = Color.blue(128)
+            }
         }
         view.setBackgroundColor(color)
     }
@@ -168,10 +185,11 @@ class MainActivity : AppCompatActivity() {
             } else if (file.isDirectory) {
                 file.delete()
                 file.createNewFile()
+            } else{
+                val content = file.readText()
+                val recoveredState = deserializeCashCategoriesFromString(content)
+                state.reloadWithAnother(recoveredState)
             }
-            val content = file.readText()
-            val recoveredState = deserializeCashCategoriesFromString(content)
-            state.reloadWithAnother(recoveredState)
             updateAll()
             Log.i("mainActivity", "uploadFromFile: finished")
         } catch (e:Exception){
@@ -184,7 +202,7 @@ class MainActivity : AppCompatActivity() {
         uploadFromFile(state)
         if(state.categories.isEmpty()) {
             val defaultCategoryName = resources.getString(R.string.category_default_name)
-            state.categories.add(CashCategory(defaultCategoryName, 0.0, false, false))
+            state.categories.add(CashCategory(defaultCategoryName, 0.0, false, false, false))
             updateAll()
         }
     }
@@ -310,6 +328,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun lockAction(state: DataState){
+        //TODO()
+        if(!state.isSelectedCategory()){
+            showNeedToSelectRow()
+            return
+        }
+        val cashCategory = state.curCategory()
+        val categoryName = cashCategory.name
+
+        val dialog = SimpleDialog(this)
+        dialog.show(
+            resources.getString(R.string.dialog_clear_category_title),
+            String.format(resources.getString(R.string.dialog_clear_category_message), categoryName)
+        ){
+            when(it){
+                SimpleDialog.ResponseType.YES -> {
+                    //clear here the sum
+                    cashCategory.sum = 0.0
+                    //unselect position
+                    state.unselectCategory()
+                    updateAll()
+                }
+                SimpleDialog.ResponseType.NO ->{}
+                SimpleDialog.ResponseType.CANCEL ->{}
+            }
+        }
+    }
+
     private fun downAction(state: DataState){
         if(!state.isSelectedCategory()){
             showNeedToSelectRow()
@@ -398,7 +445,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(context, String.format(resources.getString(R.string.toast_create_collision), text), Toast.LENGTH_SHORT).show()
                         return@show
                     }
-                    val cashCategory = CashCategory(text, 0.0, true, true)
+                    val cashCategory = CashCategory(text, 0.0, true, true, false)
                     state.categories.add(cashCategory)
                     updateAll()
                 }

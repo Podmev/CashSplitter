@@ -1,7 +1,13 @@
 package com.podmev.cashsplitter.data
 
 /*Main entity for cash category - each category shows one line in grid*/
-data class CashCategory(var name:String, var sum: Double, var canNameBeEdited: Boolean, var canBeDeleted: Boolean) {
+data class CashCategory(
+        var name:String,
+        var sum: Double,
+        var canNameBeEdited: Boolean,
+        var canBeDeleted: Boolean,
+        var locked: Boolean
+        ) {
 
 }
 //TODO change for basic serialization
@@ -9,7 +15,7 @@ const val fieldDelimiter:String = "|"
 const val recordDelimiter:String = "\n"
 
 fun CashCategory.toLine():String =
-    listOf(name, sum, canNameBeEdited, canBeDeleted).joinToString(fieldDelimiter)
+    listOf(name, sum, canNameBeEdited, canBeDeleted, locked).joinToString(fieldDelimiter)
 
 fun parseCashCategoryFromLine(line: String): CashCategory {
     val list = line.split(fieldDelimiter)
@@ -18,7 +24,8 @@ fun parseCashCategoryFromLine(line: String): CashCategory {
         list.component1(),
         list.component2().toDouble(),
         list.component3().toBooleanStrict(),
-        list.component4().toBooleanStrict()
+        list.component4().toBooleanStrict(),
+        list.component5().toBooleanStrict(),
     )
 }
 fun List<CashCategory>.toLines():String =
@@ -40,13 +47,13 @@ fun totalSumByCategories(categories:List<CashCategory>): Double =
 
 fun createSimpleCategories(): List<CashCategory> =
     listOf(
-        CashCategory("Other", 100.0, false, false),
-        CashCategory("Food", 200.0, false, false),
-        CashCategory("Medicine", 600.0, false, false),
-        CashCategory("Fun", 50.0, false, false)
+        CashCategory("Other", 100.0, false, false, false),
+        CashCategory("Food", 200.0, false, false, false),
+        CashCategory("Medicine", 600.0, false, false, false),
+        CashCategory("Fun", 50.0, false, false, false)
     )
 
 fun createMinCategories(): List<CashCategory> =
     listOf(
-        CashCategory("Other", 0.0, false, false)
+        CashCategory("Other", 0.0, false, false, false)
     )

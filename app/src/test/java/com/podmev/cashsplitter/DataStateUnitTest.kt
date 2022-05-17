@@ -9,10 +9,10 @@ class DataStateUnitTest {
     @Test
     fun serialisationTest() {
         val categories = listOf(
-            CashCategory("Other", 100.0, false, false),
-            CashCategory("Food", 200.0, false, false),
-            CashCategory("Medicine", 600.0, false, false),
-            CashCategory("Fun", 50.0, false, false)
+            CashCategory("Other", 100.0, false, false, false),
+            CashCategory("Food", 200.0, false, false, false),
+            CashCategory("Medicine", 600.0, false, false, false),
+            CashCategory("Fun", 50.0, false, false, false)
         )
         val dataState = DataState(categories.toMutableList(), -1, 1000.0)
 
