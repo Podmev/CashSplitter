@@ -8,13 +8,18 @@ import com.podmev.cashsplitter.R
 
 class EditTextDialog(context: Context) : AlertDialog.Builder(context) {
 
-    lateinit var onResponse: (r : ResponseType, text: String) -> Unit
+    lateinit var onResponse: (r: ResponseType, text: String) -> Unit
 
     enum class ResponseType {
         YES, NO, CANCEL
     }
 
-    fun show(title: String, initialText:String, hint: String, listener: (r : ResponseType, text: String) -> Unit) {
+    fun show(
+        title: String,
+        initialText: String,
+        hint: String,
+        listener: (r: ResponseType, text: String) -> Unit
+    ) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
 

@@ -6,13 +6,13 @@ import com.podmev.cashsplitter.R
 
 class SimpleDialog(context: Context) : AlertDialog.Builder(context) {
 
-    lateinit var onResponse: (r : ResponseType) -> Unit
+    lateinit var onResponse: (r: ResponseType) -> Unit
 
     enum class ResponseType {
         YES, NO, CANCEL
     }
 
-    fun show(title: String, message: String, listener: (r : ResponseType) -> Unit) {
+    fun show(title: String, message: String, listener: (r: ResponseType) -> Unit) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
         builder.setMessage(message)

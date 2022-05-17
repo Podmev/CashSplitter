@@ -7,115 +7,125 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:id="@+id/textView_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/textView_total_text"
-    />
+        android:textSize="25sp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:id="@+id/textView_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/textView_available_text"
-    />
+        android:textSize="25sp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:id="@+id/textView_not_planned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/textView_not_planned_text"
-    />
+        android:textSize="25sp" />
+
     <LinearLayout
+        android:id="@+id/up_button_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/up_button_panel">
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/button_plus"
-            android:text="@string/button_plus_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_plus_text" />
+
+        <Button
             android:id="@+id/button_up"
-            android:text="@string/button_up_text"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:text="@string/button_up_text" />
+
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/button_create"
-            android:text="@string/button_create_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-       <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_create_text" />
+
+        <Button
             android:id="@+id/button_clear"
-            android:text="@string/button_clear_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-       <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button_erase"
-            android:text="@string/button_erase_text"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:text="@string/button_clear_text" />
+
+        <Button
+            android:id="@+id/button_erase"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_erase_text" />
     </LinearLayout>
-   <LinearLayout
+
+    <LinearLayout
+        android:id="@+id/down_button_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/down_button_panel">
+        android:orientation="horizontal">
+
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/button_minus"
-            android:text="@string/button_minus_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_minus_text" />
+
+        <Button
             android:id="@+id/button_down"
-            android:text="@string/button_down_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_down_text" />
+
+        <Button
             android:id="@+id/button_edit"
-            android:text="@string/button_edit_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_edit_text" />
+
+        <Button
             android:id="@+id/button_lock"
-            android:text="@string/button_lock_text"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button_delete"
-            android:text="@string/button_delete_text"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:text="@string/button_lock_text" />
+
+        <Button
+            android:id="@+id/button_delete"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_delete_text" />
 
     </LinearLayout>
+
     <GridView
+        android:id="@+id/grid_categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/grid_categories"
-        android:numColumns="2"
-        />
+        android:numColumns="2" />
 
 </LinearLayout>

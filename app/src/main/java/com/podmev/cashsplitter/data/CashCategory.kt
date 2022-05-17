@@ -2,19 +2,20 @@ package com.podmev.cashsplitter.data
 
 /*Main entity for cash category - each category shows one line in grid*/
 data class CashCategory(
-        var name:String,
-        var sum: Double,
-        var canNameBeEdited: Boolean,
-        var canBeDeleted: Boolean,
-        var locked: Boolean
-        ) {
+    var name: String,
+    var sum: Double,
+    var canNameBeEdited: Boolean,
+    var canBeDeleted: Boolean,
+    var locked: Boolean
+) {
 
 }
-//TODO change for basic serialization
-const val fieldDelimiter:String = "|"
-const val recordDelimiter:String = "\n"
 
-fun CashCategory.toLine():String =
+//TODO change for basic serialization
+const val fieldDelimiter: String = "|"
+const val recordDelimiter: String = "\n"
+
+fun CashCategory.toLine(): String =
     listOf(name, sum, canNameBeEdited, canBeDeleted, locked).joinToString(fieldDelimiter)
 
 fun parseCashCategoryFromLine(line: String): CashCategory {
@@ -28,10 +29,11 @@ fun parseCashCategoryFromLine(line: String): CashCategory {
         list.component5().toBooleanStrict(),
     )
 }
-fun List<CashCategory>.toLines():String =
-    joinToString(recordDelimiter) { category->category.toLine() }
 
-fun parseCashCategoriesFromLines(lines: String):List<CashCategory> {
+fun List<CashCategory>.toLines(): String =
+    joinToString(recordDelimiter) { category -> category.toLine() }
+
+fun parseCashCategoriesFromLines(lines: String): List<CashCategory> {
     val list = lines.split(recordDelimiter)
     return list.map(::parseCashCategoryFromLine)
 }
@@ -39,11 +41,11 @@ fun parseCashCategoriesFromLines(lines: String):List<CashCategory> {
 /*Converts cash categories to list of strings used for filling categories grid 
 * 
 * */
-fun toPlainGridView(categories:List<CashCategory>): List<String> =
+fun toPlainGridView(categories: List<CashCategory>): List<String> =
     categories.flatMap { listOf(it.name, it.sum.toString()) }.toList()
 
-fun totalSumByCategories(categories:List<CashCategory>): Double =
-    categories.sumOf { it.sum}
+fun totalSumByCategories(categories: List<CashCategory>): Double =
+    categories.sumOf { it.sum }
 
 fun createSimpleCategories(): List<CashCategory> =
     listOf(

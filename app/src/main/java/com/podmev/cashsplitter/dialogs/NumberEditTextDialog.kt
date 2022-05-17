@@ -8,13 +8,13 @@ import com.podmev.cashsplitter.R
 
 class NumberEditTextDialog(context: Context) : AlertDialog.Builder(context) {
 
-    lateinit var onResponse: (r : ResponseType, number: Double) -> Unit
+    lateinit var onResponse: (r: ResponseType, number: Double) -> Unit
 
     enum class ResponseType {
         YES, NO, CANCEL
     }
 
-    fun show(title: String, hint: String, listener: (r : ResponseType, number: Double) -> Unit) {
+    fun show(title: String, hint: String, listener: (r: ResponseType, number: Double) -> Unit) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
 
@@ -28,14 +28,14 @@ class NumberEditTextDialog(context: Context) : AlertDialog.Builder(context) {
         // performing positive action
         builder.setPositiveButton(R.string.dialog_button_positive) { _, _ ->
             val text = input.text.toString()
-            val num = if(text == "") 0.0 else text.toDouble()
+            val num = if (text == "") 0.0 else text.toDouble()
             onResponse(ResponseType.YES, num)
         }
 
         // performing negative action
         builder.setNegativeButton(R.string.dialog_button_negative) { _, _ ->
             val text = input.text.toString()
-            val num = if(text == "") 0.0 else text.toDouble()
+            val num = if (text == "") 0.0 else text.toDouble()
             onResponse(ResponseType.NO, num)
         }
 

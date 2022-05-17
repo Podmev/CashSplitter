@@ -34,8 +34,9 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-            adapter = object:ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plainGridData){
-                override fun getView(position:Int, convertView: View?, parent: ViewGroup):View{
+            adapter = object :
+                ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plainGridData) {
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val view = super.getView(position, convertView, parent)
                     changeGridCellView(view, dataState, position)
                     return view
@@ -43,20 +44,19 @@ class MainActivity : AppCompatActivity() {
 
             }
             binding.gridCategories.adapter = adapter
-            binding.gridCategories.setOnItemClickListener{
-                    parent: AdapterView<*>?, view: View?, position: Int, id: Long->
-                        updateSelectedCategoryPosition(dataState, position)
-                        adapter.notifyDataSetChanged()
+            binding.gridCategories.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+                updateSelectedCategoryPosition(dataState, position)
+                adapter.notifyDataSetChanged()
             }
-            binding.buttonPlus.setOnClickListener{plusAction(dataState)}
-            binding.buttonMinus.setOnClickListener{minusAction(dataState)}
-            binding.buttonClear.setOnClickListener{clearAction(dataState)}
-            binding.buttonLock.setOnClickListener{lockAction(dataState)}
-            binding.buttonCreate.setOnClickListener{createAction(dataState)}
-            binding.buttonDown.setOnClickListener{downAction(dataState)}
-            binding.buttonUp.setOnClickListener{upAction(dataState)}
-            binding.buttonEdit.setOnClickListener{editAction(dataState)}
-            binding.buttonDelete.setOnClickListener{deleteAction(dataState)}
+            binding.buttonPlus.setOnClickListener { plusAction(dataState) }
+            binding.buttonMinus.setOnClickListener { minusAction(dataState) }
+            binding.buttonClear.setOnClickListener { clearAction(dataState) }
+            binding.buttonLock.setOnClickListener { lockAction(dataState) }
+            binding.buttonCreate.setOnClickListener { createAction(dataState) }
+            binding.buttonDown.setOnClickListener { downAction(dataState) }
+            binding.buttonUp.setOnClickListener { upAction(dataState) }
+            binding.buttonEdit.setOnClickListener { editAction(dataState) }
+            binding.buttonDelete.setOnClickListener { deleteAction(dataState) }
             //TODO add erase method
             //text view actions
             binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
             //end of testing
             Log.i("mainActivity", "onCreate: finished")
-        }catch (e:Throwable){
+        } catch (e: Throwable) {
             Log.e("mainActivity", "onCreate failed: ${e.javaClass}, ${e.message}")
         }
     }
@@ -76,22 +76,22 @@ class MainActivity : AppCompatActivity() {
     * yellow for selected
     * blue for locked
     * */
-    fun changeGridCellView(view:View, state: DataState, position: Int){
+    fun changeGridCellView(view: View, state: DataState, position: Int) {
 
         val selectedRow = state.selectedCategoryPosition
         val numColumns = binding.gridCategories.numColumns
         val curRow = position / numColumns
         val curCategory: CashCategory = state.categories[curRow]
         val curLocked = curCategory.locked
-        val curSelected = selectedRow==curRow
+        val curSelected = selectedRow == curRow
 
         var color = Color.TRANSPARENT
-        if(curSelected){
+        if (curSelected) {
             //in selected row
             color = Color.YELLOW
             //locked and selected row is yellow anyway
-        } else{
-            if(curLocked){
+        } else {
+            if (curLocked) {
                 //in locked row
                 color = Color.GRAY
             }
@@ -99,25 +99,25 @@ class MainActivity : AppCompatActivity() {
         view.setBackgroundColor(color)
     }
 
-    private fun showNeedToSelectRow(){
+    private fun showNeedToSelectRow() {
         Toast.makeText(this, R.string.toast_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
 
-    private fun showDontNeedToSelectRow(){
+    private fun showDontNeedToSelectRow() {
         Toast.makeText(this, R.string.toast_dont_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
 
-    private fun updateSelectedCategoryPosition(state:DataState, plainPosition: Int){
+    private fun updateSelectedCategoryPosition(state: DataState, plainPosition: Int) {
         val rowPos = plainPosition / binding.gridCategories.numColumns
-        if(state.selectedCategoryPosition==rowPos){
+        if (state.selectedCategoryPosition == rowPos) {
             state.unselectCategory()
-        } else{
+        } else {
             state.selectedCategoryPosition = rowPos
         }
     }
 
     /*updates view + file on disk*/
-    private fun updateAll(){
+    private fun updateAll() {
         Log.i("mainActivity", "updateAll: started")
         updateView(dataState)
         dumpToFile(dataState)
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* updates grid with plain data and total sum*/
-    private fun updateView(state:DataState){
+    private fun updateView(state: DataState) {
         Log.i("mainActivity", "updateView: started")
         //refresh
         Log.i("mainActivity", "updateView: started updating grid")
@@ -140,31 +140,36 @@ class MainActivity : AppCompatActivity() {
 
         //total view
         Log.i("mainActivity", "updateView: started updating textViewTotal")
-        val totalText = String.format(resources.getString(R.string.textView_total_text), state.calcTotalSum())
+        val totalText =
+            String.format(resources.getString(R.string.textView_total_text), state.calcTotalSum())
         binding.textViewTotal.text = totalText
         Log.i("mainActivity", "updateView: finished updating textViewTotal: $totalText")
 
         Log.i("mainActivity", "updateView: started updating textViewAvailable")
-        val availableText = String.format(resources.getString(R.string.textView_available_text), state.availableSum)
+        val availableText =
+            String.format(resources.getString(R.string.textView_available_text), state.availableSum)
         binding.textViewAvailable.text = availableText
         Log.i("mainActivity", "updateView: finished updating textViewAvailable: $availableText")
 
         Log.i("mainActivity", "updateView: started updating textViewNotPlanned")
-        val notPlannedText = String.format(resources.getString(R.string.textView_not_planned_text), state.calcNotPlannedSum())
+        val notPlannedText = String.format(
+            resources.getString(R.string.textView_not_planned_text),
+            state.calcNotPlannedSum()
+        )
         binding.textViewNotPlanned.text = notPlannedText
         Log.i("mainActivity", "updateView: finished updating textViewNotPlanned: $notPlannedText")
 
         Log.i("mainActivity", "updateView: finished")
     }
 
-    private fun dumpToFile(state:DataState){
+    private fun dumpToFile(state: DataState) {
         Log.i("mainActivity", "dumpToFile: started")
         val filePath = resources.getString(R.string.dumpFilePath)
         //write to private dir
         val file = File(filesDir, filePath)
-        if(!file.exists()){
+        if (!file.exists()) {
             file.createNewFile()
-        } else if(file.isDirectory){
+        } else if (file.isDirectory) {
             file.delete()
             file.createNewFile()
         }
@@ -173,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         Log.i("mainActivity", "dumpToFile: finished")
     }
 
-    private fun uploadFromFile(state:DataState){
+    private fun uploadFromFile(state: DataState) {
         try {
             Log.i("mainActivity", "uploadFromFile: started")
             val filePath = resources.getString(R.string.dumpFilePath)
@@ -184,22 +189,26 @@ class MainActivity : AppCompatActivity() {
             } else if (file.isDirectory) {
                 file.delete()
                 file.createNewFile()
-            } else{
+            } else {
                 val content = file.readText()
                 val recoveredState = deserializeCashCategoriesFromString(content)
                 state.reloadWithAnother(recoveredState)
             }
             updateAll()
             Log.i("mainActivity", "uploadFromFile: finished")
-        } catch (e:Exception){
+        } catch (e: Exception) {
             Log.e("mainActivity", "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
-            Toast.makeText(this, "Could upload dump file: ${e.message?.take(50)}", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                "Could upload dump file: ${e.message?.take(50)}",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
-    fun uploadFromFileOrDefault(state: DataState){
+    fun uploadFromFileOrDefault(state: DataState) {
         uploadFromFile(state)
-        if(state.categories.isEmpty()) {
+        if (state.categories.isEmpty()) {
             val defaultCategoryName = resources.getString(R.string.category_default_name)
             state.categories.add(CashCategory(defaultCategoryName, 0.0, false, false, false))
             updateAll()
@@ -208,26 +217,29 @@ class MainActivity : AppCompatActivity() {
 
     //actions
 
-    private fun setAvailableAction(state: DataState){
+    private fun setAvailableAction(state: DataState) {
         val dialog = NumberEditTextDialog(this)
         dialog.show(
-            String.format(resources.getString(R.string.dialog_edit_available_sum_title), state.availableSum),
+            String.format(
+                resources.getString(R.string.dialog_edit_available_sum_title),
+                state.availableSum
+            ),
             resources.getString(R.string.dialog_edit_available_sum_hint)
-        ){ responseType, number ->
-            when(responseType){
+        ) { responseType, number ->
+            when (responseType) {
                 NumberEditTextDialog.ResponseType.YES -> {
                     //value can be negative
                     state.availableSum = number
                     updateAll()
                 }
-                NumberEditTextDialog.ResponseType.NO ->{}
-                NumberEditTextDialog.ResponseType.CANCEL->{}
+                NumberEditTextDialog.ResponseType.NO -> {}
+                NumberEditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
-    private fun plusAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun plusAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
@@ -239,28 +251,32 @@ class MainActivity : AppCompatActivity() {
         dialog.show(
             String.format(resources.getString(R.string.dialog_plus_category_title), categoryName),
             resources.getString(R.string.dialog_plus_category_hint)
-        ){ responseType, number ->
-            when(responseType){
+        ) { responseType, number ->
+            when (responseType) {
                 NumberEditTextDialog.ResponseType.YES -> {
-                    if(number<0){
-                        Toast.makeText(context, resources.getString(R.string.toast_plus_negative_forbidden), Toast.LENGTH_SHORT).show()
+                    if (number < 0) {
+                        Toast.makeText(
+                            context,
+                            resources.getString(R.string.toast_plus_negative_forbidden),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         //unselect position
                         state.unselectCategory()
                         updateAll()
                         return@show
                     }
-                    cashCategory.sum+= number
+                    cashCategory.sum += number
                     state.unselectCategory()
                     updateAll()
                 }
-                NumberEditTextDialog.ResponseType.NO ->{}
-                NumberEditTextDialog.ResponseType.CANCEL->{}
+                NumberEditTextDialog.ResponseType.NO -> {}
+                NumberEditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
-    private fun minusAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun minusAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
@@ -273,35 +289,43 @@ class MainActivity : AppCompatActivity() {
         dialog.show(
             String.format(resources.getString(R.string.dialog_minus_category_title), categoryName),
             String.format(resources.getString(R.string.dialog_minus_category_hint), categorySum)
-        ){ responseType, number ->
-            when(responseType){
+        ) { responseType, number ->
+            when (responseType) {
                 NumberEditTextDialog.ResponseType.YES -> {
-                    if(number<0){
-                        Toast.makeText(context, resources.getString(R.string.toast_minus_negative_forbidden), Toast.LENGTH_SHORT).show()
+                    if (number < 0) {
+                        Toast.makeText(
+                            context,
+                            resources.getString(R.string.toast_minus_negative_forbidden),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         //unselect position
                         state.unselectCategory()
                         updateAll()
                         return@show
                     }
-                    if(number > categorySum){
-                        Toast.makeText(context, resources.getString(R.string.toast_minus_too_much_forbidden), Toast.LENGTH_SHORT).show()
+                    if (number > categorySum) {
+                        Toast.makeText(
+                            context,
+                            resources.getString(R.string.toast_minus_too_much_forbidden),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         //unselect position
                         state.unselectCategory()
                         updateAll()
                         return@show
                     }
-                    cashCategory.sum-= number
+                    cashCategory.sum -= number
                     state.unselectCategory()
                     updateAll()
                 }
-                NumberEditTextDialog.ResponseType.NO ->{}
-                NumberEditTextDialog.ResponseType.CANCEL->{}
+                NumberEditTextDialog.ResponseType.NO -> {}
+                NumberEditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
-    private fun clearAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun clearAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
@@ -312,8 +336,8 @@ class MainActivity : AppCompatActivity() {
         dialog.show(
             resources.getString(R.string.dialog_clear_category_title),
             String.format(resources.getString(R.string.dialog_clear_category_message), categoryName)
-        ){
-            when(it){
+        ) {
+            when (it) {
                 SimpleDialog.ResponseType.YES -> {
                     //clear here the sum
                     cashCategory.sum = 0.0
@@ -321,21 +345,21 @@ class MainActivity : AppCompatActivity() {
                     state.unselectCategory()
                     updateAll()
                 }
-                SimpleDialog.ResponseType.NO ->{}
-                SimpleDialog.ResponseType.CANCEL ->{}
+                SimpleDialog.ResponseType.NO -> {}
+                SimpleDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
 
-    private fun lockAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun lockAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
         val cashCategory = state.curCategory()
         val categoryName = cashCategory.name
-        if(cashCategory.locked) {
+        if (cashCategory.locked) {
             //locked -> unlock
             val dialog = SimpleDialog(this)
             dialog.show(
@@ -357,7 +381,7 @@ class MainActivity : AppCompatActivity() {
                     SimpleDialog.ResponseType.CANCEL -> {}
                 }
             }
-        } else{
+        } else {
             //unlocked -> lock
             val dialog = SimpleDialog(this)
             dialog.show(
@@ -382,12 +406,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun downAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
-        if(state.selectedCategoryPosition==state.categories.lastIndex){
+        if (state.selectedCategoryPosition == state.categories.lastIndex) {
             Toast.makeText(this, R.string.toast_cannot_go_down, Toast.LENGTH_SHORT).show()
             return
         }
@@ -395,20 +419,21 @@ class MainActivity : AppCompatActivity() {
         updateAll()
     }
 
-    private fun upAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun upAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
-        if(state.selectedCategoryPosition==0){
+        if (state.selectedCategoryPosition == 0) {
             Toast.makeText(this, R.string.toast_cannot_go_up, Toast.LENGTH_SHORT).show()
             return
         }
         state.moveSelectedCategoryUp()
         updateAll()
     }
-    private fun editAction(state: DataState){
-        if(!state.isSelectedCategory()){
+
+    private fun editAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
@@ -421,19 +446,30 @@ class MainActivity : AppCompatActivity() {
             String.format(resources.getString(R.string.dialog_edit_category_title), categoryName),
             categoryName,
             resources.getString(R.string.dialog_edit_category_hint)
-        ){ responseType, text ->
-            when(responseType){
+        ) { responseType, text ->
+            when (responseType) {
                 EditTextDialog.ResponseType.YES -> {
-                    if(text==categoryName){
-                        Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_no_changes), text), Toast.LENGTH_SHORT).show()
+                    if (text == categoryName) {
+                        Toast.makeText(
+                            context,
+                            String.format(
+                                resources.getString(R.string.toast_edit_no_changes),
+                                text
+                            ),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         //unselect position
                         state.unselectCategory()
                         updateAll()
                         return@show
                     }
-                    val foundExistedCategory = state.categories.find{it.name==text}
-                    if(foundExistedCategory!=null){
-                        Toast.makeText(context, String.format(resources.getString(R.string.toast_edit_collision), text), Toast.LENGTH_SHORT).show()
+                    val foundExistedCategory = state.categories.find { it.name == text }
+                    if (foundExistedCategory != null) {
+                        Toast.makeText(
+                            context,
+                            String.format(resources.getString(R.string.toast_edit_collision), text),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         //unselect position
                         state.unselectCategory()
                         updateAll()
@@ -443,15 +479,15 @@ class MainActivity : AppCompatActivity() {
                     state.unselectCategory()
                     updateAll()
                 }
-                EditTextDialog.ResponseType.NO ->{}
-                EditTextDialog.ResponseType.CANCEL ->{}
+                EditTextDialog.ResponseType.NO -> {}
+                EditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
-    private fun createAction(state: DataState){
+    private fun createAction(state: DataState) {
         //Single opposite check - shouldn't be selected
-        if(state.isSelectedCategory()){
+        if (state.isSelectedCategory()) {
             showDontNeedToSelectRow()
             return
         }
@@ -462,52 +498,69 @@ class MainActivity : AppCompatActivity() {
             resources.getString(R.string.dialog_create_category_title),
             "",
             resources.getString(R.string.dialog_create_category_hint)
-        ){ responseType, text ->
-            when(responseType){
+        ) { responseType, text ->
+            when (responseType) {
                 EditTextDialog.ResponseType.YES -> {
-                    val foundExistedCategory = state.categories.find{it.name==text}
-                    if(foundExistedCategory!=null){
-                        Toast.makeText(context, String.format(resources.getString(R.string.toast_create_collision), text), Toast.LENGTH_SHORT).show()
+                    val foundExistedCategory = state.categories.find { it.name == text }
+                    if (foundExistedCategory != null) {
+                        Toast.makeText(
+                            context,
+                            String.format(
+                                resources.getString(R.string.toast_create_collision),
+                                text
+                            ),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         return@show
                     }
                     val cashCategory = CashCategory(text, 0.0, true, true, false)
                     state.categories.add(cashCategory)
                     updateAll()
                 }
-                EditTextDialog.ResponseType.NO ->{}
-                EditTextDialog.ResponseType.CANCEL ->{}
+                EditTextDialog.ResponseType.NO -> {}
+                EditTextDialog.ResponseType.CANCEL -> {}
             }
         }
     }
 
-    private fun deleteAction(state: DataState){
-        if(!state.isSelectedCategory()){
+    private fun deleteAction(state: DataState) {
+        if (!state.isSelectedCategory()) {
             showNeedToSelectRow()
             return
         }
         val cashCategory = state.curCategory()
         val categoryName = cashCategory.name
 
-        if(!cashCategory.canBeDeleted){
-            Toast.makeText(this,
-                String.format(resources.getString(R.string.toast_cannot_delete_category,categoryName)),
-                Toast.LENGTH_SHORT).show()
+        if (!cashCategory.canBeDeleted) {
+            Toast.makeText(
+                this,
+                String.format(
+                    resources.getString(
+                        R.string.toast_cannot_delete_category,
+                        categoryName
+                    )
+                ),
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
         val dialog = SimpleDialog(this)
         dialog.show(
             resources.getString(R.string.dialog_delete_category_title),
-            String.format(resources.getString(R.string.dialog_delete_category_message), categoryName)
-        ){
-            when(it){
+            String.format(
+                resources.getString(R.string.dialog_delete_category_message),
+                categoryName
+            )
+        ) {
+            when (it) {
                 SimpleDialog.ResponseType.YES -> {
                     state.categories.removeAt(state.selectedCategoryPosition)
                     //unselect position
                     state.unselectCategory()
                     updateAll()
                 }
-                SimpleDialog.ResponseType.NO ->{}
-                SimpleDialog.ResponseType.CANCEL ->{}
+                SimpleDialog.ResponseType.NO -> {}
+                SimpleDialog.ResponseType.CANCEL -> {}
             }
         }
     }
