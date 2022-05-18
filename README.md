@@ -33,20 +33,20 @@ In app you can do next things:
 
 pt
 
-No aplicativo, você pode fazer as seguintes coisas:
+No aplicativo, você pode:
 - adicionar categoria
 - excluir categoria
 - editar o nome da categoria
-- adicionar soma para a categoria
-- subtrair a soma para a categoria
-- limpar valor da soma da categoria
+- adicionar valor à categoria
+- subtrair valor da categoria
+- limpar valores da categoria
 - apagar todos os dados
 - mover categorias para cima/para baixo
 - trancar categorias para atualizações
-- definir a soma disponível
+- definir valor disponível
 - observar o valor total
 - observar dinheiro não planejado
-- alerta sobre o valor negativo do dinheiro não planejado
+- receber alerta sobre valor negativo e dinheiro não planejado
 
 ru
 
