@@ -28,8 +28,10 @@ In app you can do next things:
  - set available sum
  - observe total value
  - observe not planned money 
+ - erase all data support
  - alert for negative not planned money
  - dark theme
+ - lock categories from editing and deleting
 
 
 pt
@@ -47,8 +49,10 @@ No aplicativo, você pode:
 - definir valor disponível
 - observar o valor total
 - observar dinheiro não planejado
+- apagar todos os dados suporte
 - receber alerta sobre valor negativo e dinheiro não planejado
-- modo scuro
+- modo escuro
+- trancar categorias de edição e exclusão
 
 ru
 
@@ -65,5 +69,7 @@ ru
 - установить доступную сумму
 - видеть общую стоимость
 - видеть незапланированные деньги
+- поддержка удаления всех данных
 - оповещение о негативном значении незапланированных денег
 - тёмная тема
+- блокирование категорий от изменений и удалений
