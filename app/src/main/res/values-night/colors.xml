@@ -9,7 +9,7 @@
     <color name="grid_locked_row_text">#FF0E387A</color>
 
     <color name="grid_base_row_background">#00FFFFFF</color>
-    <color name="grid_base_row_text">#FFFFFFFF</color>
+    <color name="grid_base_row_text">#FF808080</color>
 
     <!--textView notPlanned-->
     <color name="textView_notPlanned_alert_background">#FFA52A2A</color>
