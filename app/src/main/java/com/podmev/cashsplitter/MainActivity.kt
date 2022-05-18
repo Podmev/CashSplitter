@@ -3,6 +3,7 @@ package com.podmev.cashsplitter
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -100,8 +101,10 @@ class MainActivity : AppCompatActivity() {
                 textColor = R.color.grid_locked_row_text
             }
         }
+        view as TextView
         view.setBackgroundColor(ContextCompat.getColor(this, backgroundColor))
-        (view as TextView).setTextColor(ContextCompat.getColor(this, textColor))
+        view.setTextColor(ContextCompat.getColor(this, textColor))
+        view.setTextSize(TypedValue.COMPLEX_UNIT_SP, resources.getDimension(R.dimen.grid_text_size))
     }
 
     fun changeNotPlannedView(state: DataState) {
