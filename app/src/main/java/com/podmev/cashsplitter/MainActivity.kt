@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.podmev.cashsplitter.data.*
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import com.podmev.cashsplitter.dialogs.EditTextDialog
@@ -85,18 +87,22 @@ class MainActivity : AppCompatActivity() {
         val curLocked = curCategory.locked
         val curSelected = selectedRow == curRow
 
-        var color = Color.TRANSPARENT
+        var backgroundColor = R.color.grid_base_row_background
+        var textColor = R.color.grid_base_row_text
         if (curSelected) {
             //in selected row
-            color = Color.YELLOW
+            backgroundColor = R.color.grid_selected_row_background
+            textColor = R.color.grid_selected_row_text
             //locked and selected row is yellow anyway
         } else {
             if (curLocked) {
                 //in locked row
-                color = Color.GRAY
+                backgroundColor = R.color.grid_locked_row_background
+                textColor = R.color.grid_locked_row_text
             }
         }
-        view.setBackgroundColor(color)
+        view.setBackgroundColor(ContextCompat.getColor(this, backgroundColor))
+        (view as TextView).setTextColor(ContextCompat.getColor(this, textColor))
     }
 
     private fun showNeedToSelectRow() {

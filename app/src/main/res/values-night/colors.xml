@@ -2,7 +2,7 @@
 <resources>
     <!--my elements-->
     <color name="grid_selected_row_background">#FF390879</color>
-    <color name="grid_locked_row_background">#FF9FAFCA</color>
+    <color name="grid_locked_row_background">#FF525E75</color>
 
     <color name="grid_selected_row_text">#FFB8DF10</color>
     <color name="grid_locked_row_text">#FF0E387A</color>
