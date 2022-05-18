@@ -1,0 +1,71 @@
+
+1.0.7
+<en-US>
+- style with color and margins refactoring
+- alert for negative value of "Not planning money"
+- adopt interface element sizes
+- dark theme support
+</en-US>
+
+<pt-BR>
+- refatoração de estilo de cores e margens
+- alerta para valor negativo de "dinheiro não planejado"
+- adotar tamanhos de elementos de interface
+- suporte a tema escuro
+</pt-BR>
+<ru-RU>
+ - рефакторинг стилей с цветами и отступами
+ - предупреждение об отрицательном значении
+ - адаптация размеров элементов интерфейса
+ - поддрежка тёмной темы
+</ru-RU>
+
+1.0.6 - init
+
+<en-US>
+ - add category
+ - delete category
+ - edit category name
+ - add sum for category
+ - subtract sum for category
+ - clean category sum value
+ - erase all data
+ - move up/down categories
+ - lock categories for updates
+ - set available sum
+ - observe total value
+ - observe not planned money
+ - erase all data support
+ - alert for negative not planned money
+</en-US>
+<pt-BR>
+- adicionar categoria
+- excluir categoria
+- editar o nome da categoria
+- adicionar valor à categoria
+- subtrair valor da categoria
+- limpar valores da categoria
+- apagar todos os dados
+- mover categorias para cima/para baixo
+- trancar categorias para atualizações
+- definir valor disponível
+- observar o valor total
+- observar dinheiro não planejado
+- apagar todos os dados suporte
+</pt-BR>
+<ru-RU>
+- добавить категорию
+- удалить категорию
+- изменить название категории
+- добавить сумму для категории
+- вычесть сумму для категории
+- очистить значение суммы категории
+- стереть все данные
+- перемещать категории вверх/вниз
+- заблокировать категории для обновлений
+- установить доступную сумму
+- видеть общую стоимость
+- видеть незапланированные деньги
+- поддержка удаления всех данных
+- оповещение о негативном значении незапланированных денег
+</ru-RU>
