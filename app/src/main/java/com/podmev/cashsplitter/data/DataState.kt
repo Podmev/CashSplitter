@@ -19,6 +19,7 @@ data class DataState(
     }
 
     fun isSelectedCategory(): Boolean = selectedCategoryPosition != UNSELECTED_CATEGORY_POSITION
+    fun hasNotPlannedAlert(): Boolean = calcNotPlannedSum() < 0
 
     fun moveSelectedCategoryDown() {
         val curCategory = curCategory()

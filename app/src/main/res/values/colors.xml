@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--my elements-->
-
+    <!--grid-->
     <color name="grid_selected_row_background">#FFFFFF00</color>
     <color name="grid_selected_row_text">#FF4169E1</color>
 
@@ -18,6 +18,12 @@
 
     <color name="grid_base_row_background">#00FFFFFF</color>
     <color name="grid_base_row_text">#FF000000</color>
+
+    <!--textView notPlanned-->
+    <color name="textView_notPlanned_alert_background">#FFFF4500</color>
+    <color name="textView_notPlanned_alert_text">#FF283350</color>
+    <color name="textView_notPlanned_base_background">#00FFFFFF</color>
+    <color name="textView_notPlanned_base_text">#FF808080</color>
     <!--default-->
     <color name="White">#FFFFFF</color>
     <color name="Ivory">#FFFFF0</color>

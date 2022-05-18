@@ -1,7 +1,6 @@
 package com.podmev.cashsplitter
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -105,6 +104,22 @@ class MainActivity : AppCompatActivity() {
         (view as TextView).setTextColor(ContextCompat.getColor(this, textColor))
     }
 
+    fun changeNotPlannedView(state: DataState) {
+        val backgroundColor:Int
+        val textColor:Int
+
+        if(state.hasNotPlannedAlert()){
+            backgroundColor = R.color.textView_notPlanned_alert_background
+            textColor = R.color.textView_notPlanned_alert_text
+        } else {
+            backgroundColor = R.color.textView_notPlanned_base_background
+            textColor = R.color.textView_notPlanned_base_text
+        }
+        val textView = binding.textViewNotPlanned
+        textView.setBackgroundColor(ContextCompat.getColor(this, backgroundColor))
+        textView.setTextColor(ContextCompat.getColor(this, textColor))
+    }
+
     private fun showNeedToSelectRow() {
         Toast.makeText(this, R.string.toast_need_to_select_category, Toast.LENGTH_SHORT).show()
     }
@@ -167,6 +182,7 @@ class MainActivity : AppCompatActivity() {
             state.calcNotPlannedSum()
         )
         binding.textViewNotPlanned.text = notPlannedText
+        changeNotPlannedView(state)
         Log.i("mainActivity", "updateView: finished updating textViewNotPlanned: $notPlannedText")
 
         Log.i("mainActivity", "updateView: finished")

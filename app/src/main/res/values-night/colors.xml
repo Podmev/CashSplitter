@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--my elements-->
+    <!--grid-->
     <color name="grid_selected_row_background">#FF390879</color>
     <color name="grid_locked_row_background">#FF525E75</color>
 
     <color name="grid_selected_row_text">#FFB8DF10</color>
     <color name="grid_locked_row_text">#FF0E387A</color>
+
+    <color name="grid_base_row_background">#00FFFFFF</color>
     <color name="grid_base_row_text">#FFFFFFFF</color>
+
+    <!--textView notPlanned-->
+    <color name="textView_notPlanned_alert_background">#FFA52A2A</color>
+    <color name="textView_notPlanned_alert_text">#FFCD7700</color>
+    <color name="textView_notPlanned_base_background">#00FFFFFF</color>
+    <color name="textView_notPlanned_base_text">#FF808080</color>
 </resources>
