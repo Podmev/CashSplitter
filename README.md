@@ -28,12 +28,13 @@ In app you can do next things:
  - set available sum
  - observe total value
  - observe not planned money 
+ - alert for negative not planned money
 
 
 pt
 
 No aplicativo, você pode fazer as seguintes coisas:
-- Adicionar categoria
+- adicionar categoria
 - excluir categoria
 - editar o nome da categoria
 - adicionar soma para a categoria
@@ -45,6 +46,7 @@ No aplicativo, você pode fazer as seguintes coisas:
 - definir a soma disponível
 - observar o valor total
 - observar dinheiro não planejado
+- Alerta sobre o valor negativo do dinheiro não planejado
 
 ru
 
@@ -61,3 +63,4 @@ ru
 - установить доступную сумму
 - видеть общую стоимость
 - видеть незапланированные деньги
+- оповещение о негативном значении незапланированных денег
