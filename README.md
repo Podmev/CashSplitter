@@ -29,6 +29,7 @@ In app you can do next things:
  - observe total value
  - observe not planned money 
  - alert for negative not planned money
+ - dark theme
 
 
 pt
@@ -47,6 +48,7 @@ No aplicativo, você pode:
 - observar o valor total
 - observar dinheiro não planejado
 - receber alerta sobre valor negativo e dinheiro não planejado
+- modo scuro
 
 ru
 
@@ -64,3 +66,4 @@ ru
 - видеть общую стоимость
 - видеть незапланированные деньги
 - оповещение о негативном значении незапланированных денег
+- тёмная тема
