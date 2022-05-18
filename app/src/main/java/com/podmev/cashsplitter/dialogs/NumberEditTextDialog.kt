@@ -3,6 +3,7 @@ package com.podmev.cashsplitter.dialogs
 import android.app.AlertDialog
 import android.content.Context
 import android.text.InputType
+import android.util.TypedValue
 import android.widget.EditText
 import com.podmev.cashsplitter.R
 
@@ -20,6 +21,7 @@ class NumberEditTextDialog(context: Context) : AlertDialog.Builder(context) {
 
         val input = EditText(context)
         input.setHint(hint)
+        input.setTextSize(TypedValue.COMPLEX_UNIT_SP, context.resources.getDimension(R.dimen.dialog_text_size))
         input.inputType = InputType.TYPE_CLASS_NUMBER //TODO cannot be decimal
         builder.setView(input)
         builder.setIcon(android.R.drawable.ic_dialog_info)

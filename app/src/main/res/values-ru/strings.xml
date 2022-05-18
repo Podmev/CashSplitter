@@ -24,19 +24,19 @@
     <string name="dialog_clear_category_message">Вы уверены, что хотите обнулить сумму категории %1$s?</string>
 
     <string name="dialog_create_category_title">Создать новую категорию</string>
-    <string name="dialog_create_category_hint">Введите название новой категории</string>
+    <string name="dialog_create_category_hint">Введите название</string>
 
     <string name="dialog_edit_category_title">Изменить название категории %1$s</string>
-    <string name="dialog_edit_category_hint">Введите новое название для категории вместо %1$s</string>
+    <string name="dialog_edit_category_hint">Введите название</string>
 
     <string name="dialog_plus_category_title">Добавить сумму к категории %1$s</string>
     <string name="dialog_plus_category_hint">Введите значение</string>
 
     <string name="dialog_minus_category_title">Вычесть сумму из категории %1$s</string>
-    <string name="dialog_minus_category_hint">Введите значение от 0 до %1$, .2f</string>
+    <string name="dialog_minus_category_hint">Введите от 0 до %1$, .2f</string>
 
     <string name="dialog_edit_available_sum_title">Измените доступную сумму, сейчас значение %1$, .2f</string>
-    <string name="dialog_edit_available_sum_hint">Введите доступную сумму</string>
+    <string name="dialog_edit_available_sum_hint">Введите значение</string>
 
     <string name="dialog_button_positive">Да</string>
     <string name="dialog_button_negative">Нет</string>

@@ -49,7 +49,7 @@
     <string name="dialog_unlock_category_message">Do you really want to unlock sum for category %1$s?</string>
 
     <string name="dialog_create_category_title">Create new category</string>
-    <string name="dialog_create_category_hint">Type new category name</string>
+    <string name="dialog_create_category_hint">Type name</string>
 
     <string name="dialog_edit_category_title">Edit category %1$s</string>
     <string name="dialog_edit_category_hint">Type new category name</string>

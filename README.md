@@ -46,7 +46,7 @@ No aplicativo, você pode fazer as seguintes coisas:
 - definir a soma disponível
 - observar o valor total
 - observar dinheiro não planejado
-- Alerta sobre o valor negativo do dinheiro não planejado
+- alerta sobre o valor negativo do dinheiro não planejado
 
 ru
 
