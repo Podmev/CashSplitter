@@ -56,4 +56,5 @@
     <string name="fragment_main_label">Revisão de categorias</string>
     <string name="settings_header_view">Visualização</string>
     <string name="settings_view_useDarkTheme_title">Usar tema escuro</string>
+    <string name="fragment_settings_label">Configurações</string>
 </resources>

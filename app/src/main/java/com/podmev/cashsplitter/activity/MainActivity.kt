@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import com.podmev.cashsplitter.R
+import com.podmev.cashsplitter.data.UIDataState
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +51,14 @@ class MainActivity : AppCompatActivity() {
         menu: Menu
     ): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        //specially for setting fragment make menu Invisible
+        Log.i("mainActivity", "onCreateOptionsMenu isMenuHidden=${UIDataState.isMenuHidden()}")
+        if(UIDataState.isMenuHidden()){
+            for(i in 0 until menu.size()){
+                menu.getItem(i).isVisible = false
+            }
+        }
+
         return true
     }
 

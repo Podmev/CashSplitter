@@ -73,6 +73,7 @@
     <string name="category_default_name">Other</string>
 
     <string name="fragment_main_label">Categories review</string>
+    <string name="fragment_settings_label">Settings</string>
     <!-- Preference Titles -->
     <string name="messages_header" translatable="false">Messages</string>
     <string name="sync_header" translatable="false">Sync</string>
