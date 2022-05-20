@@ -57,5 +57,7 @@
     <string name="settings_header_view">Визуализация</string>
     <string name="settings_view_useDarkTheme_title">Использовать тёмную тему</string>
     <string name="fragment_settings_label">Настройки</string>
+    <string name="action_save_to_file">Создать резевную копию</string>
+    <string name="action_load_from_file">Восстановить из копии</string>
 
 </resources>

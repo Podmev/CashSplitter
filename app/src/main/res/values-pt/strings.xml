@@ -57,4 +57,6 @@
     <string name="settings_header_view">Visualização</string>
     <string name="settings_view_useDarkTheme_title">Usar tema escuro</string>
     <string name="fragment_settings_label">Configurações</string>
+    <string name="action_save_to_file">Criar um backup</string>
+    <string name="action_load_from_file">Restaurar do backup</string>
 </resources>

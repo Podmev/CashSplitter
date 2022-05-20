@@ -1,14 +1,20 @@
 package com.podmev.cashsplitter.activity
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
+import android.os.LocaleList
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
+import androidx.core.os.LocaleListCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,6 +23,8 @@ import androidx.preference.PreferenceManager
 import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.data.UIDataState
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,6 +76,16 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
         if(id == R.id.action_settings){
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.open_settings_fragment)
+            return true
+        }
+        if(id == R.id.action_save_to_file){
+            //TODO make backup through file manager
+            Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
+            return true
+        }
+        if(id == R.id.action_load_from_file){
+            //TODO restore backup through file manager
+            Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
             return true
         }
         return super.onOptionsItemSelected(item)

@@ -92,5 +92,7 @@
     <string name="settings_view_useDarkTheme_key" translatable="false">useDarkTheme</string>
     <string name="settings_header_view">View</string>
     <string name="settings_view_useDarkTheme_title">Use dark theme</string>
+    <string name="action_save_to_file">Create backup</string>
+    <string name="action_load_from_file">Restore backup</string>
 
 </resources>
