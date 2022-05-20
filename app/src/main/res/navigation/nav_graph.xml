@@ -11,8 +11,16 @@
         android:label="@string/fragment_main_label"
         tools:layout="@layout/fragment_main">
 
-        <!--<action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_MainFragment_to_SettingFragment"-->
+<!--            app:destination="@id/SettingFragment" />-->
     </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.podmev.cashsplitter.fragment.SettingsFragment">
+    </fragment>
+
+    <!--Global action-->
+    <action android:id="@+id/open_settings_fragment"
+        app:destination="@id/SettingsFragment"/>
 </navigation>

@@ -6,11 +6,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import com.podmev.cashsplitter.fragment.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if(id == R.id.action_settings){
-            Toast.makeText(this, "Settings will be here soon", Toast.LENGTH_LONG).show()
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.open_settings_fragment)
             return true
         }
         return super.onOptionsItemSelected(item)
