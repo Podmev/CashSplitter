@@ -123,11 +123,11 @@ class MainFragment : Fragment() {
         val textColor:Int
 
         if(state.hasNotPlannedAlert()){
-            backgroundColor = R.color.textView_notPlanned_alert_background
-            textColor = R.color.textView_notPlanned_alert_text
+            backgroundColor = R.color.textView_alert_background
+            textColor = R.color.textView_alert_text
         } else {
-            backgroundColor = R.color.textView_notPlanned_base_background
-            textColor = R.color.textView_notPlanned_base_text
+            backgroundColor = R.color.textView_base_background
+            textColor = R.color.textView_base_text
         }
         val textView = binding.textViewNotPlanned
         textView.setBackgroundColor(ContextCompat.getColor(requireContext(), backgroundColor))

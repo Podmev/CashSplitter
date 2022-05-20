@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/textView_base_text"
+        android:background="@color/textView_base_background"
         android:text="@string/textView_total_text"
         android:textSize="@dimen/textView_text_size" />
 
@@ -21,6 +23,8 @@
         android:id="@+id/textView_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/textView_base_text"
+        android:background="@color/textView_base_background"
         android:layout_marginStart="10dp"
         android:text="@string/textView_available_text"
         android:textSize="@dimen/textView_text_size" />
@@ -29,6 +33,8 @@
         android:id="@+id/textView_not_planned"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/textView_base_text"
+        android:background="@color/textView_base_background"
         android:layout_marginStart="10dp"
         android:text="@string/textView_not_planned_text"
         android:textSize="@dimen/textView_text_size" />

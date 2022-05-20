@@ -11,9 +11,9 @@
     <color name="grid_base_row_background">#00FFFFFF</color>
     <color name="grid_base_row_text">#FF808080</color>
 
-    <!--textView notPlanned-->
-    <color name="textView_notPlanned_alert_background">#FFA52A2A</color>
-    <color name="textView_notPlanned_alert_text">#FFCD7700</color>
-    <color name="textView_notPlanned_base_background">#00FFFFFF</color>
-    <color name="textView_notPlanned_base_text">#FF808080</color>
+    <!--textView-->
+    <color name="textView_alert_background">#FFA52A2A</color>
+    <color name="textView_alert_text">#FFCD7700</color>
+    <color name="textView_base_background">#00FFFFFF</color>
+    <color name="textView_base_text">#FF808080</color>
 </resources>
