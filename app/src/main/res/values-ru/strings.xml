@@ -54,5 +54,7 @@
     <string name="toast_didnt_erase">Данные не были удалены</string>
     <string name="toast_erased_successfully">Данные успешно удалены</string>
     <string name="fragment_main_label">Обзор категорий</string>
+    <string name="settings_header_view">Визуализация</string>
+    <string name="settings_view_useDarkTheme_title">Использовать тёмную тему</string>
 
 </resources>

@@ -54,4 +54,6 @@
     <string name="toast_didnt_erase">Os dados não foram apagados</string>
     <string name="toast_erased_successfully">Os dados foram apagados com sucesso</string>
     <string name="fragment_main_label">Revisão de categorias</string>
+    <string name="settings_header_view">Visualização</string>
+    <string name="settings_view_useDarkTheme_title">Usar tema escuro</string>
 </resources>

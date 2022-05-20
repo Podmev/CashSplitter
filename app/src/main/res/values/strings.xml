@@ -88,4 +88,8 @@
     </string>
     <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
 
+    <string name="settings_view_useDarkTheme_key" translatable="false">useDarkTheme</string>
+    <string name="settings_header_view">View</string>
+    <string name="settings_view_useDarkTheme_title">Use dark theme</string>
+
 </resources>
