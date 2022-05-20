@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.CashSplitter.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.CashSplitter.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_main" />
 
     <TextView
         android:id="@+id/textView_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/textView_total_text"
         android:textSize="@dimen/textView_text_size" />
 
@@ -60,8 +45,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_plus_text" />
+            android:text="@string/button_plus_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_up"
@@ -69,8 +54,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_up_text" />
+            android:text="@string/button_up_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_create"
@@ -78,8 +63,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_create_text" />
+            android:text="@string/button_create_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_clear"
@@ -87,8 +72,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_clear_text" />
+            android:text="@string/button_clear_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_erase"
@@ -96,8 +81,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_erase_text" />
+            android:text="@string/button_erase_text"
+            android:textSize="@dimen/button_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -112,8 +97,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_minus_text" />
+            android:text="@string/button_minus_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_down"
@@ -121,8 +106,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_down_text" />
+            android:text="@string/button_down_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_edit"
@@ -130,8 +115,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_edit_text" />
+            android:text="@string/button_edit_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_lock"
@@ -139,8 +124,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_lock_text" />
+            android:text="@string/button_lock_text"
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button_delete"
@@ -148,8 +133,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/button_delete_text" />
+            android:text="@string/button_delete_text"
+            android:textSize="@dimen/button_text_size" />
 
     </LinearLayout>
 

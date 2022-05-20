@@ -53,5 +53,6 @@
     <string name="dialog_erase_category_password">Я хочу удалить всё</string>
     <string name="toast_didnt_erase">Данные не были удалены</string>
     <string name="toast_erased_successfully">Данные успешно удалены</string>
+    <string name="fragment_main_label">Обзор категорий</string>
 
 </resources>
