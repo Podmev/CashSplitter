@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             setContentView(binding.root)
 
             setSupportActionBar(binding.toolbar)
+            binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
             val navController = navHostFragment.navController
