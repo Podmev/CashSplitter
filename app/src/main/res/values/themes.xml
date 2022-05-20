@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="actionOverflowMenuStyle">@style/OptionsMenuCustomStyle</item>
     </style>
 
     <style name="Theme.CashSplitter.NoActionBar">
@@ -22,4 +23,9 @@
     <style name="Theme.CashSplitter.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.CashSplitter.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="OptionsMenuCustomStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+        <item name="android:overlapAnchor" tools:ignore="NewApi">false</item>
+        <item name="android:dropDownVerticalOffset">4.0dip</item>
+    </style>
 </resources>
