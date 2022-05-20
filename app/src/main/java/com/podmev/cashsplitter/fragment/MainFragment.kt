@@ -1,4 +1,4 @@
-package com.podmev.cashsplitter
+package com.podmev.cashsplitter.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -13,12 +13,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.data.*
-import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import com.podmev.cashsplitter.databinding.FragmentMainBinding
-import com.podmev.cashsplitter.dialogs.EditTextDialog
-import com.podmev.cashsplitter.dialogs.NumberEditTextDialog
-import com.podmev.cashsplitter.dialogs.SimpleDialog
+import com.podmev.cashsplitter.dialog.EditTextDialog
+import com.podmev.cashsplitter.dialog.NumberEditTextDialog
+import com.podmev.cashsplitter.dialog.SimpleDialog
 import java.io.File
 
 class MainFragment : Fragment() {

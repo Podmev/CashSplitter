@@ -1,4 +1,4 @@
-package com.podmev.cashsplitter.dialogs
+package com.podmev.cashsplitter.dialog
 
 import android.app.AlertDialog
 import android.content.Context

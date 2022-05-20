@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">CashSplitter</string>
+    <string name="app_name" translatable="false">Cash Splitter</string>
 
     <string name="dumpFilePath" translatable="false">dumpfile.txt</string>
 
