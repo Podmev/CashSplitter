@@ -1,20 +1,21 @@
 package com.podmev.cashsplitter.activity
 
+import android.app.Activity
 import android.content.Intent
+import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.SharedPreferences
-import android.content.res.Configuration
-import android.content.res.Resources
+import android.net.Uri
 import android.os.Bundle
-import android.os.LocaleList
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
-import androidx.core.os.LocaleListCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,7 +24,9 @@ import androidx.preference.PreferenceManager
 import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.data.UIDataState
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import com.podmev.cashsplitter.utils.formatNowSnakeCase
 import java.util.*
+import kotlin.math.min
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +35,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     /*we need field so garbage collector would not clean it*/
     private lateinit var onSharedPreferenceChangeListener: SharedPreferences.OnSharedPreferenceChangeListener
+
+    private var getFilesLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val data: Intent = it.data!!
+            sendFiles(data)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
@@ -81,14 +93,38 @@ class MainActivity : AppCompatActivity() {
         if(id == R.id.action_save_to_file){
             //TODO make backup through file manager
             Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
+
+            val fileName = "cash_splitter_backup_${formatNowSnakeCase()}.txt"
+
+//            val uri = Uri.Builder().appendPath(fileName).build()
+            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.type = "*/*"
+            intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
+            intent.putExtra(Intent.EXTRA_TITLE, fileName)
+            intent.flags = FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
+            getFilesLauncher.launch(intent)
             return true
         }
         if(id == R.id.action_load_from_file){
             //TODO restore backup through file manager
             Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.type = "*/*"
+            intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
+            intent.flags = FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
+            getFilesLauncher.launch(intent)
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    //files
+
+    private fun sendFiles(intent: Intent){
+        //TODO
+        Log.i("mainActivity", "sendFiles started")
     }
 
     //preferences
@@ -133,4 +169,5 @@ class MainActivity : AppCompatActivity() {
         setDefaultNightMode(newNightMode)
         Log.i("mainActivity", "useDarkThemeSetting: finished")
     }
+
 }
