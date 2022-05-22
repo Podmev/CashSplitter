@@ -24,6 +24,8 @@ import java.io.File
 class MainFragment : Fragment() {
     companion object {
         const val logTag = "mainFragment"
+
+        var fragmentInstance: MainFragment? = null
     }
     private var _binding: FragmentMainBinding? = null
     // This property is only valid between onCreateView and
@@ -71,6 +73,9 @@ class MainFragment : Fragment() {
 
         uploadFromFileOrDefault(dataState)
 
+        //HACK - remove it later
+        fragmentInstance = this
+
         Log.i(logTag, "onCreate: finished")
         return binding.root
         } catch (e: Throwable) {
@@ -82,6 +87,7 @@ class MainFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        fragmentInstance = null
         _binding = null
     }
 
@@ -207,6 +213,12 @@ class MainFragment : Fragment() {
         val filePath = resources.getString(R.string.dumpFilePath)
         //write to private dir
         val file = File(requireContext().filesDir, filePath)
+        saveToChosenFile(state, file)
+        Log.i(logTag, "dumpToFile: finished")
+    }
+
+    //TODO set private
+    fun saveToChosenFile(state: DataState, file: File) {
         if (!file.exists()) {
             file.createNewFile()
         } else if (file.isDirectory) {
@@ -214,8 +226,8 @@ class MainFragment : Fragment() {
             file.createNewFile()
         }
         val content = state.serialize()
-        requireContext().openFileOutput(filePath, Context.MODE_PRIVATE).write(content.toByteArray())
-        Log.i(logTag, "dumpToFile: finished")
+        requireContext().openFileOutput(file.name, Context.MODE_PRIVATE).write(content.toByteArray())
+        Log.i(logTag, "saveToFile: finished")
     }
 
     private fun uploadFromFile(state: DataState) {
@@ -224,6 +236,21 @@ class MainFragment : Fragment() {
             val filePath = resources.getString(R.string.dumpFilePath)
             //read from private dir
             val file = File(requireContext().filesDir, filePath)
+            uploadFromChosenFile(state, file)
+            Log.i(logTag, "uploadFromFile: finished")
+        } catch (e: Exception) {
+            Log.e(logTag, "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
+            Toast.makeText(
+                requireContext(),
+                "Could upload dump file: ${e.message?.take(50)}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    //TODO set private
+    fun uploadFromChosenFile(state: DataState, file: File) {
+        try {
             if (!file.exists()) {
                 file.createNewFile()
             } else if (file.isDirectory) {

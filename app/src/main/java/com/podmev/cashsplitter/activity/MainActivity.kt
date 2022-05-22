@@ -23,7 +23,11 @@ import androidx.preference.PreferenceManager
 import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.data.UIDataState
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
+import com.podmev.cashsplitter.fragment.MainFragment
 import com.podmev.cashsplitter.utils.formatNowSnakeCase
+import com.podmev.cashsplitter.utils.getFileName
+import com.podmev.cashsplitter.utils.getFilePathFromUri
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -130,17 +134,27 @@ class MainActivity : AppCompatActivity() {
     //files
 
     private fun saveFiles(intent: Intent){
-        //TODO
+        //TODO make normal way
         //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
-
-        Log.i("mainActivity", "saveFiles started")
+        val uri = intent.data!!
+        val path: String = getFileName(this, uri)
+        //HACK
+        Log.i("mainActivity", "saveFiles started: path=${path}")
+        val mainFragment = MainFragment.fragmentInstance!!
+        mainFragment.saveToChosenFile(mainFragment.dataState, File(path))
+        Log.i("mainActivity", "saveFiles finished")
     }
 
     private fun openFiles(intent: Intent){
-        //TODO
+        //TODO make normal way
         //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
-        intent.flags
-        Log.i("mainActivity", "openFiles started")
+        val uri = intent.data!!
+        val path: String = getFileName(this, uri)
+        //HACK
+        Log.i("mainActivity", "openFiles started: path=${path}")
+        val mainFragment = MainFragment.fragmentInstance!!
+        mainFragment.uploadFromChosenFile(mainFragment.dataState, File(path))
+        Log.i("mainActivity", "openFiles finished")
     }
 
     //preferences
