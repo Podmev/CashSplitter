@@ -162,7 +162,7 @@ class MainFragment : Fragment() {
     }
 
     /*updates view + file on disk*/
-    private fun updateAll() {
+    fun updateAll() {
         Log.i(logTag, "updateAll: started")
         updateView(dataState)
         dumpToFile(dataState)
@@ -258,7 +258,7 @@ class MainFragment : Fragment() {
                 file.createNewFile()
             } else {
                 val content = file.readText()
-                val recoveredState = deserializeCashCategoriesFromString(content)
+                val recoveredState = deserializeDataStateFromString(content)
                 state.reloadWithAnother(recoveredState)
             }
             updateAll()

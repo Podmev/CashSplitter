@@ -16,6 +16,6 @@ class DataStateUnitTest {
         )
         val dataState = DataState(categories.toMutableList(), -1, 1000.0)
 
-        Assert.assertEquals(dataState, deserializeCashCategoriesFromString(dataState.serialize()))
+        Assert.assertEquals(dataState, deserializeDataStateFromString(dataState.serialize()))
     }
 }

@@ -59,7 +59,7 @@ fun DataState.serialize(): String =
         recordDelimiter
     )
 
-fun deserializeCashCategoriesFromString(lines: String): DataState {
+fun deserializeDataStateFromString(lines: String): DataState {
     //important that is 3, because we want only 2 lines and then full text till end of documents without split
     val list = lines.split(recordDelimiter, limit = 3)
     val selectedCategoryPosition = list.component1().toInt()

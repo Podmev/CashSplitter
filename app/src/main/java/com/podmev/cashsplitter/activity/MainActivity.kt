@@ -6,6 +6,7 @@ import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.SharedPreferences
 import android.os.Bundle
+//import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -21,13 +22,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import com.podmev.cashsplitter.R
-import com.podmev.cashsplitter.data.UIDataState
+import com.podmev.cashsplitter.data.*
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import com.podmev.cashsplitter.fragment.MainFragment
 import com.podmev.cashsplitter.utils.formatNowSnakeCase
-import com.podmev.cashsplitter.utils.getFileName
-import com.podmev.cashsplitter.utils.getFilePathFromUri
-import java.io.File
+import java.io.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -102,11 +101,8 @@ class MainActivity : AppCompatActivity() {
         }
         if(id == R.id.action_save_to_file){
             //TODO make backup through file manager
-            Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
-
             val fileName = "cash_splitter_backup_${formatNowSnakeCase()}.txt"
 
-//            val uri = Uri.Builder().appendPath(fileName).build()
             val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
             intent.addCategory(Intent.CATEGORY_OPENABLE)
             intent.type = "*/*"
@@ -119,7 +115,6 @@ class MainActivity : AppCompatActivity() {
         }
         if(id == R.id.action_load_from_file){
             //TODO restore backup through file manager
-            Toast.makeText(this, "backup is under construction", Toast.LENGTH_LONG).show()
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.addCategory(Intent.CATEGORY_OPENABLE)
             intent.type = "*/*"
@@ -134,27 +129,45 @@ class MainActivity : AppCompatActivity() {
     //files
 
     private fun saveFiles(intent: Intent){
+        Log.i("mainActivity", "saveFiles started")
         //TODO make normal way
-        //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
         val uri = intent.data!!
-        val path: String = getFileName(this, uri)
+        val outputStream = contentResolver.openOutputStream(uri)
+        val writer = BufferedWriter(OutputStreamWriter(outputStream))
+
         //HACK
-        Log.i("mainActivity", "saveFiles started: path=${path}")
         val mainFragment = MainFragment.fragmentInstance!!
-        mainFragment.saveToChosenFile(mainFragment.dataState, File(path))
-        Log.i("mainActivity", "saveFiles finished")
+        val content = mainFragment.dataState.serialize()
+        writer.write(content)
+        writer.flush()
+        writer.close()
+        Log.i("mainActivity", "saveFiles finished: ${content}")
     }
 
     private fun openFiles(intent: Intent){
         //TODO make normal way
-        //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
         val uri = intent.data!!
-        val path: String = getFileName(this, uri)
+        val inputStream = contentResolver.openInputStream(uri)
+        val reader = BufferedReader(InputStreamReader(inputStream))
         //HACK
-        Log.i("mainActivity", "openFiles started: path=${path}")
+        val content = reader.readLines().joinToString("\n" )
+        reader.close()
+        val maybeBackupDataState: DataState? = parseBackupContent(content)
+        if(maybeBackupDataState==null){
+            Toast.makeText(this, "backup is broken", Toast.LENGTH_LONG).show()
+            Log.i("mainActivity", "openFiles interrupted: ${content}")
+            return
+        }
         val mainFragment = MainFragment.fragmentInstance!!
-        mainFragment.uploadFromChosenFile(mainFragment.dataState, File(path))
-        Log.i("mainActivity", "openFiles finished")
+        mainFragment.dataState.reloadWithAnother(maybeBackupDataState)
+        mainFragment.updateAll()
+        Log.i("mainActivity", "openFiles finished: ${content}")
+    }
+
+    fun parseBackupContent(content: String): DataState? = try {
+        deserializeDataStateFromString(content)
+    } catch (e: Throwable){
+        null
     }
 
     //preferences
