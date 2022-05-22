@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -25,8 +24,6 @@ import com.podmev.cashsplitter.R
 import com.podmev.cashsplitter.data.UIDataState
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import com.podmev.cashsplitter.utils.formatNowSnakeCase
-import java.util.*
-import kotlin.math.min
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,12 +33,21 @@ class MainActivity : AppCompatActivity() {
     /*we need field so garbage collector would not clean it*/
     private lateinit var onSharedPreferenceChangeListener: SharedPreferences.OnSharedPreferenceChangeListener
 
-    private var getFilesLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+    private var getFilesSaveLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == Activity.RESULT_OK) {
             val data: Intent = it.data!!
-            sendFiles(data)
+            saveFiles(data)
+        }
+    }
+
+    private var getFilesOpenLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val data: Intent = it.data!!
+            openFiles(data)
         }
     }
 
@@ -102,8 +108,9 @@ class MainActivity : AppCompatActivity() {
             intent.type = "*/*"
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             intent.putExtra(Intent.EXTRA_TITLE, fileName)
+            intent.putExtra("myType", "save")
             intent.flags = FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
-            getFilesLauncher.launch(intent)
+            getFilesSaveLauncher.launch(intent)
             return true
         }
         if(id == R.id.action_load_from_file){
@@ -114,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             intent.type = "*/*"
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             intent.flags = FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
-            getFilesLauncher.launch(intent)
+            getFilesOpenLauncher.launch(intent)
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -122,9 +129,18 @@ class MainActivity : AppCompatActivity() {
 
     //files
 
-    private fun sendFiles(intent: Intent){
+    private fun saveFiles(intent: Intent){
         //TODO
-        Log.i("mainActivity", "sendFiles started")
+        //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
+
+        Log.i("mainActivity", "saveFiles started")
+    }
+
+    private fun openFiles(intent: Intent){
+        //TODO
+        //uriString:content://com.android.externalstorage.documents/document/primary%3ADocuments%2Fcash_splitter_backup_2022_5_22_11_37_28.txt
+        intent.flags
+        Log.i("mainActivity", "openFiles started")
     }
 
     //preferences
