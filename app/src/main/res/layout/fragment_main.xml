@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -45,50 +46,70 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_plus"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_plus_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_add_circle_24"
+            android:contentDescription="@string/button_plus_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_up"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_up_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24"
+            android:contentDescription="@string/button_up_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_create"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_create_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_create_new_folder_24"
+            android:contentDescription="@string/button_create_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_clear"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_clear_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_change_circle_24"
+            android:contentDescription="@string/button_clear_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_erase"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_erase_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_clear_24"
+            android:contentDescription="@string/button_erase_text"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -97,50 +118,70 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_minus"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_minus_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_remove_circle_24"
+            android:contentDescription="@string/button_minus_text"
+        />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_down"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_down_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24"
+            android:contentDescription="@string/button_down_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_edit"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_edit_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_edit_24"
+            android:contentDescription="@string/button_edit_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_lock"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_lock_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_lock_24"
+            android:contentDescription="@string/button_lock_text"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_delete"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_delete_text"
-            android:textSize="@dimen/button_text_size" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_delete_24"
+            android:contentDescription="@string/button_delete_text"
+            />
 
     </LinearLayout>
 
