@@ -1,12 +1,12 @@
 package com.podmev.cashsplitter.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.SharedPreferences
 import android.os.Bundle
-//import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -78,15 +79,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(
         menu: Menu
     ): Boolean {
+
         menuInflater.inflate(R.menu.menu_main, menu)
         //specially for setting fragment make menu Invisible
         Log.i("mainActivity", "onCreateOptionsMenu isMenuHidden=${UIDataState.isMenuHidden()}")
         if(UIDataState.isMenuHidden()){
             for(i in 0 until menu.size()){
                 menu.getItem(i).isVisible = false
+            }
+        } else{
+            if (menu is MenuBuilder) {
+                menu.setOptionalIconsVisible(true)
             }
         }
 
