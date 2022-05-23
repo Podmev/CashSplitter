@@ -5,6 +5,7 @@
 - menu
 - settings
 - backup support
+- button icons updated
 </en-US>
 
 <pt-BR>
@@ -12,12 +13,14 @@
 - menu
 - configurações
 - suporte de backup
+- ícones de botão atualizados
 </pt-BR>
 <ru-RU>
  - панель инструментов
  - меню
  - настройки
  - поддержка резервных копий
+ - обновлены иконки для кнопок
 </ru-RU>
 
 1.0.7
