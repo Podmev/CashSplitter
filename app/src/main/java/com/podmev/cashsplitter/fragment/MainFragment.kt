@@ -22,16 +22,19 @@ import com.podmev.cashsplitter.dialog.SimpleDialog
 import java.io.File
 
 class MainFragment : Fragment() {
+    //HACK
     companion object {
         const val logTag = "mainFragment"
 
         var fragmentInstance: MainFragment? = null
     }
+
     private var _binding: FragmentMainBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    
+
     /*main state of app - persisting one*/
     var dataState = createEmptyDataState()
 
@@ -43,41 +46,45 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         try {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+            _binding = FragmentMainBinding.inflate(inflater, container, false)
 
-        adapter = object :
-            ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, plainGridData) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent)
-                changeGridCellView(view, dataState, position)
-                return view
+            adapter = object :
+                ArrayAdapter<String>(
+                    requireContext(),
+                    android.R.layout.simple_list_item_1,
+                    plainGridData
+                ) {
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getView(position, convertView, parent)
+                    changeGridCellView(view, dataState, position)
+                    return view
+                }
             }
-        }
-        binding.gridCategories.adapter = adapter
-        binding.gridCategories.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
-            updateSelectedCategoryPosition(dataState, position)
-            adapter.notifyDataSetChanged()
-        }
-        binding.buttonPlus.setOnClickListener { plusAction(dataState) }
-        binding.buttonMinus.setOnClickListener { minusAction(dataState) }
-        binding.buttonClear.setOnClickListener { clearAction(dataState) }
-        binding.buttonLock.setOnClickListener { lockAction(dataState) }
-        binding.buttonCreate.setOnClickListener { createAction(dataState) }
-        binding.buttonDown.setOnClickListener { downAction(dataState) }
-        binding.buttonUp.setOnClickListener { upAction(dataState) }
-        binding.buttonEdit.setOnClickListener { editAction(dataState) }
-        binding.buttonDelete.setOnClickListener { deleteAction(dataState) }
-        binding.buttonErase.setOnClickListener { eraseAction(dataState) }
-        //text view actions
-        binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
+            binding.gridCategories.adapter = adapter
+            binding.gridCategories.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+                updateSelectedCategoryPosition(dataState, position)
+                adapter.notifyDataSetChanged()
+            }
+            binding.buttonPlus.setOnClickListener { plusAction(dataState) }
+            binding.buttonMinus.setOnClickListener { minusAction(dataState) }
+            binding.buttonClear.setOnClickListener { clearAction(dataState) }
+            binding.buttonLock.setOnClickListener { lockAction(dataState) }
+            binding.buttonCreate.setOnClickListener { createAction(dataState) }
+            binding.buttonDown.setOnClickListener { downAction(dataState) }
+            binding.buttonUp.setOnClickListener { upAction(dataState) }
+            binding.buttonEdit.setOnClickListener { editAction(dataState) }
+            binding.buttonDelete.setOnClickListener { deleteAction(dataState) }
+            binding.buttonErase.setOnClickListener { eraseAction(dataState) }
+            //text view actions
+            binding.textViewAvailable.setOnClickListener { setAvailableAction(dataState) }
 
-        uploadFromFileOrDefault(dataState)
+            uploadFromFileOrDefault(dataState)
 
-        //HACK - remove it later
-        fragmentInstance = this
+            //HACK - remove it later
+            fragmentInstance = this
 
-        Log.i(logTag, "onCreate: finished")
-        return binding.root
+            Log.i(logTag, "onCreate: finished")
+            return binding.root
         } catch (e: Throwable) {
             Log.e(logTag, "onCreate failed: ${e.javaClass}, ${e.message}")
             e.printStackTrace()
@@ -125,10 +132,10 @@ class MainFragment : Fragment() {
     }
 
     fun changeNotPlannedView(state: DataState) {
-        val backgroundColor:Int
-        val textColor:Int
+        val backgroundColor: Int
+        val textColor: Int
 
-        if(state.hasNotPlannedAlert()){
+        if (state.hasNotPlannedAlert()) {
             backgroundColor = R.color.textView_alert_background
             textColor = R.color.textView_alert_text
         } else {
@@ -141,15 +148,24 @@ class MainFragment : Fragment() {
     }
 
     private fun showNeedToSelectRow() {
-        Toast.makeText(requireContext(), R.string.toast_need_to_select_category, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), R.string.toast_need_to_select_category, Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun showDontNeedToSelectRow() {
-        Toast.makeText(requireContext(), R.string.toast_dont_need_to_select_category, Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            requireContext(),
+            R.string.toast_dont_need_to_select_category,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
-    private fun showCannotChangeLockedCategory(){
-        Toast.makeText(requireContext(), R.string.toast_cannot_change_locked_category, Toast.LENGTH_SHORT).show()
+    private fun showCannotChangeLockedCategory() {
+        Toast.makeText(
+            requireContext(),
+            R.string.toast_cannot_change_locked_category,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun updateSelectedCategoryPosition(state: DataState, plainPosition: Int) {
@@ -209,16 +225,27 @@ class MainFragment : Fragment() {
     }
 
     private fun dumpToFile(state: DataState) {
-        Log.i(logTag, "dumpToFile: started")
-        val filePath = resources.getString(R.string.dumpFilePath)
-        //write to private dir
-        val file = File(requireContext().filesDir, filePath)
-        saveToChosenFile(state, file)
-        Log.i(logTag, "dumpToFile: finished")
+        try {
+            Log.i(logTag, "dumpToFile: started")
+            val filePath = resources.getString(R.string.dumpFilePath)
+            //write to private dir
+            val file = File(requireContext().filesDir, filePath)
+            saveToChosenFile(state, file)
+            Log.i(logTag, "dumpToFile: finished")
+        } catch (e: Exception) {
+            Log.e(logTag, "dumpToFile: failed: ${e.javaClass}, ${e.message}")
+            Toast.makeText(
+                requireContext(),
+                String.format(
+                    resources.getString(R.string.toast_dump_file_save_fail),
+                    e.message?.take(50)
+                ),
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
-    //TODO set private
-    fun saveToChosenFile(state: DataState, file: File) {
+    private fun saveToChosenFile(state: DataState, file: File) {
         if (!file.exists()) {
             file.createNewFile()
         } else if (file.isDirectory) {
@@ -226,55 +253,49 @@ class MainFragment : Fragment() {
             file.createNewFile()
         }
         val content = state.serialize()
-        requireContext().openFileOutput(file.name, Context.MODE_PRIVATE).write(content.toByteArray())
+        requireContext().openFileOutput(file.name, Context.MODE_PRIVATE)
+            .write(content.toByteArray())
         Log.i(logTag, "saveToFile: finished")
     }
 
-    private fun uploadFromFile(state: DataState) {
+    private fun loadFromFile(state: DataState) {
         try {
-            Log.i(logTag, "uploadFromFile: started")
+            Log.i(logTag, "loadFromFile: started")
             val filePath = resources.getString(R.string.dumpFilePath)
             //read from private dir
             val file = File(requireContext().filesDir, filePath)
-            uploadFromChosenFile(state, file)
-            Log.i(logTag, "uploadFromFile: finished")
+            loadFromChosenFile(state, file)
+            Log.i(logTag, "loadFromFile: finished")
         } catch (e: Exception) {
-            Log.e(logTag, "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
+            Log.e(logTag, "loadFromFile: failed: ${e.javaClass}, ${e.message}")
             Toast.makeText(
                 requireContext(),
-                "Could upload dump file: ${e.message?.take(50)}",
+                String.format(
+                    resources.getString(R.string.toast_dump_file_load_fail),
+                    e.message?.take(50)
+                ),
                 Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    //TODO set private
-    fun uploadFromChosenFile(state: DataState, file: File) {
-        try {
-            if (!file.exists()) {
-                file.createNewFile()
-            } else if (file.isDirectory) {
-                file.delete()
-                file.createNewFile()
-            } else {
-                val content = file.readText()
-                val recoveredState = deserializeDataStateFromString(content)
-                state.reloadWithAnother(recoveredState)
-            }
-            updateAll()
-            Log.i(logTag, "uploadFromFile: finished")
-        } catch (e: Exception) {
-            Log.e(logTag, "uploadFromFile: failed: ${e.javaClass}, ${e.message}")
-            Toast.makeText(
-                requireContext(),
-                "Could upload dump file: ${e.message?.take(50)}",
-                Toast.LENGTH_LONG
-            ).show()
+    private fun loadFromChosenFile(state: DataState, file: File) {
+        if (!file.exists()) {
+            file.createNewFile()
+        } else if (file.isDirectory) {
+            file.delete()
+            file.createNewFile()
+        } else {
+            val content = file.readText()
+            val recoveredState = deserializeDataStateFromString(content)
+            state.reloadWithAnother(recoveredState)
         }
+        updateAll()
+        Log.i(logTag, "loadFromChosenFile: finished")
     }
 
-    fun uploadFromFileOrDefault(state: DataState) {
-        uploadFromFile(state)
+    private fun uploadFromFileOrDefault(state: DataState) {
+        loadFromFile(state)
         //TODO make smarter check
         if (state.categories.isEmpty()) {
             state.categories.addAll(createDefaultCategories())
@@ -282,7 +303,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun createDefaultCategories():List<CashCategory>{
+    private fun createDefaultCategories(): List<CashCategory> {
         val defaultCategoryName = resources.getString(R.string.category_default_name)
         return listOf(CashCategory(defaultCategoryName, 0.0, false, false, false))
     }
@@ -316,7 +337,7 @@ class MainFragment : Fragment() {
             return
         }
         val cashCategory = state.curCategory()
-        if(cashCategory.locked){
+        if (cashCategory.locked) {
             showCannotChangeLockedCategory()
             return
         }
@@ -357,7 +378,7 @@ class MainFragment : Fragment() {
             return
         }
         val cashCategory = state.curCategory()
-        if(cashCategory.locked){
+        if (cashCategory.locked) {
             showCannotChangeLockedCategory()
             return
         }
@@ -410,7 +431,7 @@ class MainFragment : Fragment() {
             return
         }
         val cashCategory = state.curCategory()
-        if(cashCategory.locked){
+        if (cashCategory.locked) {
             showCannotChangeLockedCategory()
             return
         }
@@ -496,7 +517,8 @@ class MainFragment : Fragment() {
             return
         }
         if (state.selectedCategoryPosition == state.categories.lastIndex) {
-            Toast.makeText(requireContext(), R.string.toast_cannot_go_down, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.toast_cannot_go_down, Toast.LENGTH_SHORT)
+                .show()
             return
         }
         state.moveSelectedCategoryDown()
@@ -522,7 +544,7 @@ class MainFragment : Fragment() {
             return
         }
         val cashCategory = state.curCategory()
-        if(cashCategory.locked){
+        if (cashCategory.locked) {
             showCannotChangeLockedCategory()
             return
         }
@@ -617,7 +639,7 @@ class MainFragment : Fragment() {
             return
         }
         val cashCategory = state.curCategory()
-        if(cashCategory.locked){
+        if (cashCategory.locked) {
             showCannotChangeLockedCategory()
             return
         }
@@ -659,7 +681,7 @@ class MainFragment : Fragment() {
 
     /*to erase all data we need to type password in each language different*/
     private fun eraseAction(state: DataState) {
-        for( cashCategory in state.categories) {
+        for (cashCategory in state.categories) {
             if (cashCategory.locked) {
                 showCannotChangeLockedCategory()
                 return
@@ -677,7 +699,7 @@ class MainFragment : Fragment() {
         ) { responseType, text ->
             when (responseType) {
                 EditTextDialog.ResponseType.YES -> {
-                    if(text==resources.getString(R.string.dialog_erase_category_password)){
+                    if (text == resources.getString(R.string.dialog_erase_category_password)) {
                         //password is correct - we can erase data
                         state.erase(createDefaultCategories())
                         Toast.makeText(
@@ -690,7 +712,7 @@ class MainFragment : Fragment() {
                         ).show()
                         updateAll()
                         return@show
-                    } else{
+                    } else {
                         Toast.makeText(
                             context,
                             String.format(

@@ -59,5 +59,12 @@
     <string name="fragment_settings_label">Настройки</string>
     <string name="action_save_to_file">Создать резевную копию</string>
     <string name="action_load_from_file">Восстановить из копии</string>
+    <string name="toast_backup_created">Резервная копия создана</string>
+    <string name="toast_backup_creating_failed">Ошибка при создании резервной копии</string>
+    <string name="toast_backup_broken">Резервная копия некорректна</string>
+    <string name="toast_backup_loaded">Загружена резервная копия</string>
+    <string name="toast_backup_loading_failed">Ошибка при загрузке резервной копии</string>
+    <string name="toast_dump_file_load_fail">Ошибка при загрузке данных: %1$s</string>
+    <string name="toast_dump_file_save_fail">Ошибка при сохранении данных: %1$s</string>
 
 </resources>

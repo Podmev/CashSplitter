@@ -94,5 +94,12 @@
     <string name="settings_view_useDarkTheme_title">Use dark theme</string>
     <string name="action_save_to_file">Create backup</string>
     <string name="action_load_from_file">Restore backup</string>
+    <string name="toast_backup_created">Backup is created</string>
+    <string name="toast_backup_creating_failed">Failed creating backup</string>
+    <string name="toast_backup_broken">Backup is broken</string>
+    <string name="toast_backup_loaded">Backup is loaded</string>
+    <string name="toast_backup_loading_failed">Loading backup failed</string>
+    <string name="toast_dump_file_load_fail">"Couldn\'t load dump file: %1$s"</string>
+    <string name="toast_dump_file_save_fail">Couldn\'t save dump file</string>
 
 </resources>

@@ -59,4 +59,11 @@
     <string name="fragment_settings_label">Configurações</string>
     <string name="action_save_to_file">Criar um backup</string>
     <string name="action_load_from_file">Restaurar do backup</string>
+    <string name="toast_backup_created">O backup foi criado</string>
+    <string name="toast_backup_creating_failed">Falha ao criar backup</string>
+    <string name="toast_backup_broken">O backup está quebrado</string>
+    <string name="toast_backup_loading_failed">Falha ao carregar o backup</string>
+    <string name="toast_backup_loaded">O backup foi carregado</string>
+    <string name="toast_dump_file_load_fail">Falha ao carregar arquivo de despejo: %1$s</string>
+    <string name="toast_dump_file_save_fail">Falha ao criar arquivo de despejo: %1$s</string>
 </resources>

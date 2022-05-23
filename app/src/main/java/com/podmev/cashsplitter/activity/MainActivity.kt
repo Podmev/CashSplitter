@@ -129,39 +129,49 @@ class MainActivity : AppCompatActivity() {
     //files
 
     private fun saveFiles(intent: Intent){
-        Log.i("mainActivity", "saveFiles started")
-        //TODO make normal way
-        val uri = intent.data!!
-        val outputStream = contentResolver.openOutputStream(uri)
-        val writer = BufferedWriter(OutputStreamWriter(outputStream))
+        try {
+            Log.i("mainActivity", "saveFiles started")
+            //TODO make normal way
+            val uri = intent.data!!
+            val outputStream = contentResolver.openOutputStream(uri)
+            val writer = BufferedWriter(OutputStreamWriter(outputStream))
 
-        //HACK
-        val mainFragment = MainFragment.fragmentInstance!!
-        val content = mainFragment.dataState.serialize()
-        writer.write(content)
-        writer.flush()
-        writer.close()
-        Log.i("mainActivity", "saveFiles finished: ${content}")
+            //HACK
+            val mainFragment = MainFragment.fragmentInstance!!
+            val content = mainFragment.dataState.serialize()
+            writer.write(content)
+            writer.flush()
+            writer.close()
+            Toast.makeText(this,  resources.getString(R.string.toast_backup_created), Toast.LENGTH_SHORT).show()
+            Log.i("mainActivity", "saveFiles finished: ${content}")
+        } catch (e:Throwable){
+            Toast.makeText(this,  resources.getString(R.string.toast_backup_creating_failed), Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun openFiles(intent: Intent){
-        //TODO make normal way
-        val uri = intent.data!!
-        val inputStream = contentResolver.openInputStream(uri)
-        val reader = BufferedReader(InputStreamReader(inputStream))
-        //HACK
-        val content = reader.readLines().joinToString("\n" )
-        reader.close()
-        val maybeBackupDataState: DataState? = parseBackupContent(content)
-        if(maybeBackupDataState==null){
-            Toast.makeText(this, "backup is broken", Toast.LENGTH_LONG).show()
-            Log.i("mainActivity", "openFiles interrupted: ${content}")
-            return
+        try {
+            //TODO make normal way
+            val uri = intent.data!!
+            val inputStream = contentResolver.openInputStream(uri)
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            //HACK
+            val content = reader.readLines().joinToString("\n")
+            reader.close()
+            val maybeBackupDataState: DataState? = parseBackupContent(content)
+            if (maybeBackupDataState == null) {
+                Toast.makeText(this,  resources.getString(R.string.toast_backup_broken), Toast.LENGTH_SHORT).show()
+                Log.i("mainActivity", "openFiles interrupted: ${content}")
+                return
+            }
+            val mainFragment = MainFragment.fragmentInstance!!
+            mainFragment.dataState.reloadWithAnother(maybeBackupDataState)
+            mainFragment.updateAll()
+            Toast.makeText(this,  resources.getString(R.string.toast_backup_loaded), Toast.LENGTH_SHORT).show()
+            Log.i("mainActivity", "openFiles finished: ${content}")
+        } catch (e:Throwable){
+            Toast.makeText(this,  resources.getString(R.string.toast_backup_loading_failed), Toast.LENGTH_SHORT).show()
         }
-        val mainFragment = MainFragment.fragmentInstance!!
-        mainFragment.dataState.reloadWithAnother(maybeBackupDataState)
-        mainFragment.updateAll()
-        Log.i("mainActivity", "openFiles finished: ${content}")
     }
 
     fun parseBackupContent(content: String): DataState? = try {
