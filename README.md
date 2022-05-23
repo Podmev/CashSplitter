@@ -32,6 +32,8 @@ In app you can do next things:
  - alert for negative not planned money
  - dark theme
  - lock categories from editing and deleting
+ - settings
+ - backup support
 
 
 pt
@@ -53,6 +55,8 @@ No aplicativo, você pode:
 - receber alerta sobre valor negativo e dinheiro não planejado
 - modo escuro
 - trancar categorias de edição e exclusão
+- configurações
+- suporte de backup
 
 ru
 
@@ -73,3 +77,5 @@ ru
 - оповещение о негативном значении незапланированных денег
 - тёмная тема
 - блокирование категорий от изменений и удалений
+- настройки
+- поддержка резервных копий

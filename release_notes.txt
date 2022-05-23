@@ -1,4 +1,25 @@
 
+1.0.8
+<en-US>
+- toolbar
+- menu
+- settings
+- backup support
+</en-US>
+
+<pt-BR>
+- barra de ferramentas
+- menu
+- configurações
+- suporte de backup
+</pt-BR>
+<ru-RU>
+ - панель инструментов
+ - меню
+ - настройки
+ - поддержка резервных копий
+</ru-RU>
+
 1.0.7
 <en-US>
 - style with color and margins refactoring
