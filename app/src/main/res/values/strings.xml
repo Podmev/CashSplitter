@@ -112,4 +112,6 @@
     <string name="developer_name">Dmitrii Pozdin</string>
     <string name="developer_email" translatable="false">podmev@gmail.com</string>
     <string name="textView_review_and_comments_text">All remarks, comments and suggestions about application can be sent via e-mail: \n<a href="mailto:podmev@gmail.com">podmev@gmail.com</a></string>
+    <string name="playStoreAppLink" translatable="false">https://play.google.com/store/apps/details?id=com.podmev.cashsplitter</string>
+
 </resources>

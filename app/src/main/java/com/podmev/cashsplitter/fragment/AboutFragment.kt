@@ -1,5 +1,7 @@
 package com.podmev.cashsplitter.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.util.Log
@@ -14,6 +16,9 @@ import com.podmev.cashsplitter.utils.getProjectVersionName
 
 //TODO If Ania make icons and design, i need to put her on page
 //TODO add FAQ
+//TODO add link to site
+//TODO add link to tutorial
+//TODO add custom rate dialog
 class AboutFragment : Fragment() {
     companion object {
         private const val logTag = "AboutFragment"
@@ -37,6 +42,7 @@ class AboutFragment : Fragment() {
             )
             //next line is needed for clickable link in textView
             binding.textViewReviewAndComments.movementMethod = LinkMovementMethod.getInstance()
+            binding.buttonRateApp.setOnClickListener{rateButtonAction()}
             return binding.root
         } catch (e: Throwable) {
             Log.e(logTag, "onCreateView failed: ${e.javaClass}, ${e.message}")
@@ -56,5 +62,12 @@ class AboutFragment : Fragment() {
             getProjectVersionName(requireContext()),
             getProjectVersionCode(requireContext()).toString()
         )
+
+    private fun rateButtonAction(){
+        val url = resources.getString(R.string.playStoreAppLink)
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+    }
 
 }
