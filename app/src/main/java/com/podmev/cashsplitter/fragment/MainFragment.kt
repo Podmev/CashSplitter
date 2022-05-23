@@ -24,7 +24,7 @@ import java.io.File
 class MainFragment : Fragment() {
     //HACK
     companion object {
-        const val logTag = "mainFragment"
+        private const val logTag = "mainFragment"
 
         var fragmentInstance: MainFragment? = null
     }
@@ -83,10 +83,10 @@ class MainFragment : Fragment() {
             //HACK - remove it later
             fragmentInstance = this
 
-            Log.i(logTag, "onCreate: finished")
+            Log.i(logTag, "onCreateView: finished")
             return binding.root
         } catch (e: Throwable) {
-            Log.e(logTag, "onCreate failed: ${e.javaClass}, ${e.message}")
+            Log.e(logTag, "onCreateView failed: ${e.javaClass}, ${e.message}")
             e.printStackTrace()
             return inflater.inflate(R.layout.fragment_main, container, false)
         }

@@ -77,7 +77,10 @@
     <string name="button_erase_description">Apagar tudo</string>
     <string name="button_delete_description">Apagar</string>
 
-    <string name="about_description">Cash Splitter é um aplicativo financeiro para dividir seu dinheiro virtualmente em categorias, quando você não tem oportunidade de dividir dinheiro em conta bancária. Quando o dinheiro separado em categorias é muito mais fácil de controlar e, portanto, de economizar.</string>
+    <string name="about_description"><b>Cash Splitter</b> é um aplicativo financeiro para dividir seu dinheiro virtualmente em categorias, quando você não tem oportunidade de dividir dinheiro em conta bancária. Quando o dinheiro separado em categorias é muito mais fácil de controlar e, portanto, de economizar.</string>
     <string name="fragment_about_label">Sobre o aplicativo</string>
     <string name="action_about">Sobre o aplicativo</string>
+    <string name="button_rate_app_text">Avaliar aplicativo</string>
+    <string name="image_logo_description">Ícone do logotipo</string>
+    <string name="textView_version">Versão: %1$s (%2$s)</string>
 </resources>
