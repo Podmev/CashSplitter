@@ -83,5 +83,7 @@
     <string name="button_rate_app_text">Оценить приложение</string>
     <string name="image_logo_description">Иконка логотипа</string>
     <string name="textView_version">Версия: %1$s (%2$s)</string>
-    <string name="textView_developed_by_text">Разработано: Дмитрий Поздин</string>
+    <string name="textView_developed_by_text">Разработано: %1$s</string>
+    <string name="developer_name">Дмитрий Поздин</string>
+    <string name="textView_review_and_comments_text">Все замечания, комментарии и предложения по работе приложения можно присылать на электронную почту по адресу: %1$s</string>
 </resources>

@@ -108,5 +108,8 @@
     <string name="button_rate_app_text">Rate app</string>
     <string name="image_logo_description">Logo icon</string>
     <string name="textView_version">Version: %1$s (%2$s)</string>
-    <string name="textView_developed_by_text">Developed by: Dmitrii Pozdin</string>
+    <string name="textView_developed_by_text">Developed by: %1$s</string>
+    <string name="developer_name">Dmitrii Pozdin</string>
+    <string name="developer_email" translatable="false">podmev@gmail.com</string>
+    <string name="textView_review_and_comments_text">All remarks, comments and suggestions on the application can be sent via e-mail: %1$s</string>
 </resources>

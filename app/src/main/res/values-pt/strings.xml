@@ -83,5 +83,7 @@
     <string name="button_rate_app_text">Avaliar aplicativo</string>
     <string name="image_logo_description">Ícone do logotipo</string>
     <string name="textView_version">Versão: %1$s (%2$s)</string>
-    <string name="textView_developed_by_text">Desenvolvido por: Dmitrii Pozdin</string>
+    <string name="textView_developed_by_text">Desenvolvido por: %1$s</string>
+    <string name="developer_name">Dmitrii Pozdin</string>
+    <string name="textView_review_and_comments_text">Todas as observações, comentários e sugestões sobre o aplicativo podem ser enviados por e-mail: %1$s</string>
 </resources>

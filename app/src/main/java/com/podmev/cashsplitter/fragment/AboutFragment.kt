@@ -30,6 +30,14 @@ class AboutFragment : Fragment() {
         try {
             _binding = FragmentAboutBinding.inflate(inflater, container, false)
             binding.textViewVersion.text = getVersionText()
+            binding.textViewDevelopedBy.text = String.format(
+                resources.getString(R.string.textView_developed_by_text),
+                resources.getString(R.string.developer_name)
+            )
+            binding.textViewReviewAndComments.text = String.format(
+                resources.getString(R.string.textView_review_and_comments_text),
+                resources.getString(R.string.developer_email)
+            )
             return binding.root
         } catch (e: Throwable) {
             Log.e(logTag, "onCreateView failed: ${e.javaClass}, ${e.message}")
