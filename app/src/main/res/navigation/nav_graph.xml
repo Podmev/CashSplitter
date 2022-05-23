@@ -17,10 +17,19 @@
     </fragment>
     <fragment
         android:id="@+id/SettingsFragment"
+        android:label="@string/fragment_settings_label"
         android:name="com.podmev.cashsplitter.fragment.SettingsFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/AboutFragment"
+        android:label="@string/fragment_about_label"
+        android:name="com.podmev.cashsplitter.fragment.AboutFragment">
     </fragment>
 
     <!--Global action-->
     <action android:id="@+id/open_settings_fragment"
         app:destination="@id/SettingsFragment"/>
+
+    <action android:id="@+id/open_about_fragment"
+        app:destination="@id/AboutFragment"/>
 </navigation>

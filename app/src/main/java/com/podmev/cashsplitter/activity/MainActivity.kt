@@ -123,6 +123,10 @@ class MainActivity : AppCompatActivity() {
             getFilesOpenLauncher.launch(intent)
             return true
         }
+        if(id == R.id.action_about){
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.open_about_fragment)
+            return true
+        }
         return super.onOptionsItemSelected(item)
     }
 
