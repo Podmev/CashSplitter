@@ -6,6 +6,7 @@
 - settings
 - backup support
 - button icons updated
+- about app
 </en-US>
 
 <pt-BR>
@@ -14,6 +15,7 @@
 - configurações
 - suporte de backup
 - ícones de botão atualizados
+- sobre o aplicativo
 </pt-BR>
 <ru-RU>
  - панель инструментов
@@ -21,6 +23,7 @@
  - настройки
  - поддержка резервных копий
  - обновлены иконки для кнопок
+ - о приложении
 </ru-RU>
 
 1.0.7
