@@ -1,6 +1,7 @@
 package com.podmev.cashsplitter.fragment
 
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,10 +35,8 @@ class AboutFragment : Fragment() {
                 resources.getString(R.string.textView_developed_by_text),
                 resources.getString(R.string.developer_name)
             )
-            binding.textViewReviewAndComments.text = String.format(
-                resources.getString(R.string.textView_review_and_comments_text),
-                resources.getString(R.string.developer_email)
-            )
+            //next line is needed for clickable link in textView
+            binding.textViewReviewAndComments.movementMethod = LinkMovementMethod.getInstance()
             return binding.root
         } catch (e: Throwable) {
             Log.e(logTag, "onCreateView failed: ${e.javaClass}, ${e.message}")
