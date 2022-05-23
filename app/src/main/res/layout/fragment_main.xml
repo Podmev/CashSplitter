@@ -56,7 +56,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_add_circle_24"
-            android:contentDescription="@string/button_plus_text"
+            android:contentDescription="@string/button_plus_description"
             />
 
         <ImageButton
@@ -69,7 +69,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24"
-            android:contentDescription="@string/button_up_text"
+            android:contentDescription="@string/button_up_description"
             />
 
         <ImageButton
@@ -82,7 +82,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_create_new_folder_24"
-            android:contentDescription="@string/button_create_text"
+            android:contentDescription="@string/button_create_description"
             />
 
         <ImageButton
@@ -95,7 +95,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_change_circle_24"
-            android:contentDescription="@string/button_clear_text"
+            android:contentDescription="@string/button_clear_description"
             />
 
         <ImageButton
@@ -108,7 +108,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_clear_24"
-            android:contentDescription="@string/button_erase_text"
+            android:contentDescription="@string/button_erase_description"
             />
     </LinearLayout>
 
@@ -128,7 +128,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_remove_circle_24"
-            android:contentDescription="@string/button_minus_text"
+            android:contentDescription="@string/button_minus_description"
         />
 
         <ImageButton
@@ -141,7 +141,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24"
-            android:contentDescription="@string/button_down_text"
+            android:contentDescription="@string/button_down_description"
             />
 
         <ImageButton
@@ -154,7 +154,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_edit_24"
-            android:contentDescription="@string/button_edit_text"
+            android:contentDescription="@string/button_edit_description"
             />
 
         <ImageButton
@@ -167,7 +167,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_lock_24"
-            android:contentDescription="@string/button_lock_text"
+            android:contentDescription="@string/button_lock_description"
             />
 
         <ImageButton
@@ -180,7 +180,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_baseline_delete_24"
-            android:contentDescription="@string/button_delete_text"
+            android:contentDescription="@string/button_delete_description"
             />
 
     </LinearLayout>

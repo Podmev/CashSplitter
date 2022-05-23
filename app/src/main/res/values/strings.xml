@@ -3,16 +3,16 @@
 
     <string name="dumpFilePath" translatable="false">dumpfile.txt</string>
 
-    <string name="button_plus_text" translatable="false">➕</string>
-    <string name="button_minus_text" translatable="false">➖</string>
-    <string name="button_clear_text" translatable="false">🔄</string>
-    <string name="button_lock_text" translatable="false">🔐</string>
-    <string name="button_down_text" translatable="false">⬇</string>
-    <string name="button_up_text" translatable="false">⬆</string>
-    <string name="button_edit_text" translatable="false">✎</string>
-    <string name="button_create_text" translatable="false">📝</string>
-    <string name="button_erase_text" translatable="false">❌</string>
-    <string name="button_delete_text" translatable="false">🗑</string>
+    <string name="button_plus_description">Plus</string>
+    <string name="button_minus_description">Minus</string>
+    <string name="button_clear_description">Clear</string>
+    <string name="button_lock_description">Lock</string>
+    <string name="button_down_description">Down</string>
+    <string name="button_up_description">Up</string>
+    <string name="button_edit_description">Edit</string>
+    <string name="button_create_description">Create</string>
+    <string name="button_erase_description">Erase</string>
+    <string name="button_delete_description">Delete</string>
 
     <string name="action_settings">Settings</string>
 

@@ -66,5 +66,15 @@
     <string name="toast_backup_loading_failed">Ошибка при загрузке резервной копии</string>
     <string name="toast_dump_file_load_fail">Ошибка при загрузке данных: %1$s</string>
     <string name="toast_dump_file_save_fail">Ошибка при сохранении данных: %1$s</string>
+    <string name="button_plus_description">Добавить</string>
+    <string name="button_minus_description">Вычесть</string>
+    <string name="button_clear_description">Обнулить</string>
+    <string name="button_lock_description">Заблокировать</string>
+    <string name="button_down_description">Вниз</string>
+    <string name="button_up_description">Вверх</string>
+    <string name="button_edit_description">Изменить</string>
+    <string name="button_create_description">Создать</string>
+    <string name="button_erase_description">Удалить всё</string>
+    <string name="button_delete_description">Удалить</string>
 
 </resources>
