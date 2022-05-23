@@ -68,5 +68,14 @@
             android:layout_margin="20dp"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_developed_by"
+            android:text="@string/textView_developed_by_text"
+            android:textSize="25sp"
+            android:layout_margin="20dp"
+            />
+
     </LinearLayout>
 </LinearLayout>

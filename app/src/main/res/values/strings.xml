@@ -102,10 +102,11 @@
     <string name="toast_dump_file_load_fail">"Couldn\'t load dump file: %1$s"</string>
     <string name="toast_dump_file_save_fail">Couldn\'t save dump file</string>
 
-    <string name="about_description"><b>Cash Splitter</b> is financial app for virtual splitting your money into categories, when you don\'t have opportunity to split money in bank account. When money separated in categories is much easier to control and therefore to save.</string>
+    <string name="about_description"><b>Cash Splitter</b> is financial app for virtual splitting your money into categories, when you don\'t have opportunity to split money in bank account. When money separated in categories is much easier to control it and therefore to save.</string>
     <string name="fragment_about_label">About app</string>
     <string name="action_about">About app</string>
     <string name="button_rate_app_text">Rate app</string>
     <string name="image_logo_description">Logo icon</string>
     <string name="textView_version">Version: %1$s (%2$s)</string>
+    <string name="textView_developed_by_text">Developed by: Dmitrii Pozdin</string>
 </resources>

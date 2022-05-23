@@ -11,6 +11,8 @@ import com.podmev.cashsplitter.databinding.FragmentAboutBinding
 import com.podmev.cashsplitter.utils.getProjectVersionCode
 import com.podmev.cashsplitter.utils.getProjectVersionName
 
+//TODO If Ania make icons and design, i need to put her on page
+//TODO add FAQ
 class AboutFragment : Fragment() {
     companion object {
         private const val logTag = "AboutFragment"

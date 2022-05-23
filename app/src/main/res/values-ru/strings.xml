@@ -83,4 +83,5 @@
     <string name="button_rate_app_text">Оценить приложение</string>
     <string name="image_logo_description">Иконка логотипа</string>
     <string name="textView_version">Версия: %1$s (%2$s)</string>
+    <string name="textView_developed_by_text">Разработано: Дмитрий Поздин</string>
 </resources>
