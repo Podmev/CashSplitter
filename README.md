@@ -88,3 +88,21 @@ ru
 - блокирование категорий от изменений и удалений
 - настройки
 - поддержка резервных копий
+
+
+Firebase Admin SDK
+Your Firebase service account can be used to authenticate multiple Firebase features, such as Database, Storage and Auth, programmatically via the unified Admin SDK. Learn more
+
+Firebase service account
+firebase-adminsdk-175se@cash-splitter-b2345.iam.gserviceaccount.com
+Admin SDK configuration snippet
+
+FileInputStream serviceAccount =
+new FileInputStream("path/to/serviceAccountKey.json");
+
+FirebaseOptions options = new FirebaseOptions.Builder()
+.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+.build();
+
+FirebaseApp.initializeApp(options);
+
