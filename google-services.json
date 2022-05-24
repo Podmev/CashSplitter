@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1088785782317",
+    "project_id": "cash-splitter-b2345",
+    "storage_bucket": "cash-splitter-b2345.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088785782317:android:8b9de063956e9fcde68aa4",
+        "android_client_info": {
+          "package_name": "com.podmev.cashsplitter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088785782317-goi2t1a6571m4is4s9ivg0la4kuv671u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.podmev.cashsplitter",
+            "certificate_hash": "01adf552fc701d821f3c2bdb6d4a8c453ac65cb0"
+          }
+        },
+        {
+          "client_id": "1088785782317-v5fckptk7hda1l4hhuqj6dvmh8gi1eg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv8LEFRGlemNA9k1phALopQ4UVGF8Cruk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088785782317-v5fckptk7hda1l4hhuqj6dvmh8gi1eg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
