@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+cash-splitter-b2345-firebase-*.json
+encoded-key.txt
+/app/google-services.json
