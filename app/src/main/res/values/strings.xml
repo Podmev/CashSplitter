@@ -70,6 +70,7 @@
     <string name="dialog_button_positive">Yes</string>
     <string name="dialog_button_negative">No</string>
 
+    <!--TODO delete later category_default_name-->
     <string name="category_default_name">Other</string>
 
     <string name="fragment_main_label">Categories review</string>

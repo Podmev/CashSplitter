@@ -54,8 +54,3 @@ fun createSimpleCategories(): List<CashCategory> =
         CashCategory("Medicine", 600.0, false, false, false),
         CashCategory("Fun", 50.0, false, false, false)
     )
-
-fun createMinCategories(): List<CashCategory> =
-    listOf(
-        CashCategory("Other", 0.0, false, false, false)
-    )

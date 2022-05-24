@@ -309,10 +309,8 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun createDefaultCategories(): List<CashCategory> {
-        val defaultCategoryName = resources.getString(R.string.category_default_name)
-        return listOf(CashCategory(defaultCategoryName, 0.0, false, false, false))
-    }
+    /*Make we should make some default categories*/
+    private fun createDefaultCategories(): List<CashCategory> = listOf()
 
     //actions
 
