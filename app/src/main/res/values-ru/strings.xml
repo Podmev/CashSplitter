@@ -86,4 +86,7 @@
     <string name="textView_developed_by_text">Разработано: %1$s</string>
     <string name="developer_name">Дмитрий Поздин</string>
     <string name="textView_review_and_comments_text">Все замечания, комментарии и предложения по работе приложения можно присылать на электронную почту по адресу:  \n<a href="mailto:podmev@gmail.com">podmev@gmail.com</a></string>
+    <string name="settings_fragment_main_useTotal_title">Использовать значение \"Всего\"</string>
+    <string name="settings_fragment_main_useAvailable_title">Использовать значение \"Доступно\"</string>
+    <string name="settings_fragment_main_useNotPlanned_title">Использовать значение \"Не запланировано\"</string>
 </resources>

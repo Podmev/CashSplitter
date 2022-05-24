@@ -113,5 +113,11 @@
     <string name="developer_email" translatable="false">podmev@gmail.com</string>
     <string name="textView_review_and_comments_text">All remarks, comments and suggestions about application can be sent via e-mail: \n<a href="mailto:podmev@gmail.com">podmev@gmail.com</a></string>
     <string name="playStoreAppLink" translatable="false">https://play.google.com/store/apps/details?id=com.podmev.cashsplitter</string>
+    <string name="settings_fragment_main_useTotal_key" translatable="false">useTotalSum</string>
+    <string name="settings_fragment_main_useAvailable_key" translatable="false">useAvailableSum</string>
+    <string name="settings_fragment_main_useNotPlanned_key" translatable="false">useNotPlannedSum</string>
+    <string name="settings_fragment_main_useTotal_title">Use \"Total\" sum</string>
+    <string name="settings_fragment_main_useAvailable_title">Use \"Available\" sum</string>
+    <string name="settings_fragment_main_useNotPlanned_title">Use \"Not planned\" sum</string>
 
 </resources>

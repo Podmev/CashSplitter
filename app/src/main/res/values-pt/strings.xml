@@ -86,4 +86,7 @@
     <string name="textView_developed_by_text">Desenvolvido por: %1$s</string>
     <string name="developer_name">Dmitrii Pozdin</string>
     <string name="textView_review_and_comments_text">Todas as observações, comentários e sugestões sobre o aplicativo podem ser enviados por e-mail: \n<a href="mailto:podmev@gmail.com">podmev@gmail.com</a></string>
+    <string name="settings_fragment_main_useTotal_title">Usar \"Total\" valor</string>
+    <string name="settings_fragment_main_useAvailable_title">Usar \"Disponível\" valor</string>
+    <string name="settings_fragment_main_useNotPlanned_title">Usar \"Não planejado\" valor</string>
 </resources>

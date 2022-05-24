@@ -8,6 +8,29 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/fragment_main_label">
+
+        <SwitchPreferenceCompat
+            app:key="@string/settings_fragment_main_useTotal_key"
+            app:title="@string/settings_fragment_main_useTotal_title"
+            app:defaultValue="true"
+            />
+
+        <SwitchPreferenceCompat
+            app:key="@string/settings_fragment_main_useAvailable_key"
+            app:title="@string/settings_fragment_main_useAvailable_title"
+            app:defaultValue="true"
+            />
+
+        <SwitchPreferenceCompat
+            app:dependency="@string/settings_fragment_main_useAvailable_key"
+            app:key="@string/settings_fragment_main_useNotPlanned_key"
+            app:title="@string/settings_fragment_main_useNotPlanned_title"
+            app:defaultValue="true"
+            />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/messages_header">
 
         <EditTextPreference
