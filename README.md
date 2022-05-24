@@ -1,5 +1,7 @@
 Android app which helps control virtual split of money you have and control it
 
+Trello board with features workflow
+https://trello.com/b/fJAAkpos/cash-splitter
 
 
 short description for play store
