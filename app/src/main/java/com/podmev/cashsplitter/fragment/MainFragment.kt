@@ -19,6 +19,7 @@ import com.podmev.cashsplitter.databinding.FragmentMainBinding
 import com.podmev.cashsplitter.dialog.EditTextDialog
 import com.podmev.cashsplitter.dialog.NumberEditTextDialog
 import com.podmev.cashsplitter.dialog.SimpleDialog
+import com.podmev.cashsplitter.utils.getVisibilityInt
 import java.io.File
 
 class MainFragment : Fragment() {
@@ -33,7 +34,8 @@ class MainFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    //TODO make private
+    val binding get() = _binding!!
 
     /*main state of app - persisting one*/
     var dataState = createEmptyDataState()
@@ -65,6 +67,10 @@ class MainFragment : Fragment() {
                 updateSelectedCategoryPosition(dataState, position)
                 adapter.notifyDataSetChanged()
             }
+            binding.textViewTotal.visibility = getVisibilityInt(UIDataState.useTotalTextView)
+            binding.textViewAvailable.visibility = getVisibilityInt(UIDataState.useAvailableTextView)
+            binding.textViewNotPlanned.visibility = getVisibilityInt(UIDataState.useNotPlannedTextView)
+
             binding.buttonPlus.setOnClickListener { plusAction(dataState) }
             binding.buttonMinus.setOnClickListener { minusAction(dataState) }
             binding.buttonClear.setOnClickListener { clearAction(dataState) }

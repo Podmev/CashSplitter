@@ -17,5 +17,9 @@ class UIDataState {
         }
 
         fun isMenuHidden() = toolbarState == ToolBarState.TOOLBAR_STATE_HIDE_MENU
+
+        var useTotalTextView: Boolean = false
+        var useAvailableTextView: Boolean = false
+        var useNotPlannedTextView: Boolean = false
     }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,6 +28,7 @@ import com.podmev.cashsplitter.data.*
 import com.podmev.cashsplitter.databinding.ActivityMainBinding
 import com.podmev.cashsplitter.fragment.MainFragment
 import com.podmev.cashsplitter.utils.formatNowSnakeCase
+import com.podmev.cashsplitter.utils.getVisibilityInt
 import java.io.*
 
 
@@ -212,6 +214,9 @@ class MainActivity : AppCompatActivity() {
     private fun usePreferencesValues(sharedPreferences: SharedPreferences){
         Log.i("mainActivity", "usePreferencesValues: started")
         useDarkThemeSetting(sharedPreferences)
+        useTotalSumSetting(sharedPreferences)
+        useAvailableSumSetting(sharedPreferences)
+        useNotPlannedSumSetting(sharedPreferences)
         //TODO add others
         Log.i("mainActivity", "usePreferencesValues: finished")
     }
@@ -220,6 +225,9 @@ class MainActivity : AppCompatActivity() {
         Log.i("mainActivity", "useUpdatedPreferenceValue: started for key $key")
         when(key){
             resources.getString(R.string.settings_view_useDarkTheme_key)->useDarkThemeSetting(sharedPreferences)
+            resources.getString(R.string.settings_fragment_main_useTotal_key)->useTotalSumSetting(sharedPreferences)
+            resources.getString(R.string.settings_fragment_main_useAvailable_key)->useAvailableSumSetting(sharedPreferences)
+            resources.getString(R.string.settings_fragment_main_useNotPlanned_key)->useNotPlannedSumSetting(sharedPreferences)
             //TODO add others
         }
         Log.i("mainActivity", "useUpdatedPreferenceValue: started for key $key")
@@ -232,6 +240,48 @@ class MainActivity : AppCompatActivity() {
         val newNightMode = if(useDarkTheme) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         setDefaultNightMode(newNightMode)
         Log.i("mainActivity", "useDarkThemeSetting: finished")
+    }
+
+    private fun useTotalSumSetting(sharedPreferences: SharedPreferences){
+        Log.i("mainActivity", "useTotalSumSetting: started")
+        val useTotal = sharedPreferences.getBoolean(resources.getString(R.string.settings_fragment_main_useTotal_key), true)
+        //HACK
+        val totalTextView:View? = findViewById(R.id.textView_total)
+        if(totalTextView!=null){
+            totalTextView.visibility = getVisibilityInt(useTotal)
+        }
+        UIDataState.useTotalTextView = useTotal
+        Log.i("mainActivity", "useTotalSumSetting: finished")
+    }
+
+    private fun useAvailableSumSetting(sharedPreferences: SharedPreferences){
+        Log.i("mainActivity", "useAvailableSumSetting: started")
+        val useAvailable = sharedPreferences.getBoolean(resources.getString(R.string.settings_fragment_main_useAvailable_key), true)
+        //use anyway
+        useNotPlannedSumSetting(sharedPreferences)
+
+        //HACK
+        val availableTextView:View? = findViewById(R.id.textView_available)
+        if(availableTextView!=null){
+            availableTextView.visibility = getVisibilityInt(useAvailable)
+        }
+        UIDataState.useAvailableTextView = useAvailable
+        Log.i("mainActivity", "useAvailableSumSetting: finished")
+    }
+
+    /*Not planned works only if available sum is on*/
+    private fun useNotPlannedSumSetting(sharedPreferences: SharedPreferences){
+        Log.i("mainActivity", "useNotPlannedSumSetting: started")
+        val useNotPlanned =
+            sharedPreferences.getBoolean(resources.getString(R.string.settings_fragment_main_useAvailable_key), true) &&
+            sharedPreferences.getBoolean(resources.getString(R.string.settings_fragment_main_useNotPlanned_key), true)
+        //HACK
+        val notPlannedTextView:View? = findViewById(R.id.textView_total)
+        if(notPlannedTextView!=null){
+            notPlannedTextView.visibility = getVisibilityInt(useNotPlanned)
+        }
+        UIDataState.useNotPlannedTextView = useNotPlanned
+        Log.i("mainActivity", "useNotPlannedSumSetting: finished")
     }
 
 }
